@@ -1,0 +1,1758 @@
+<!doctype html>
+<html lang="en-GB" data-tone="dark" data-audio="off">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daily Drift</title>
+<meta name="description" content="A word, a quote and a joke each day, in a calm space that answers your touch.">
+<meta name="theme-color" content="#0B101A">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Daily Drift">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..400;1,6..72,300&display=swap">
+<script>
+  // Paint the last colours straight away; on a first visit, follow the phone's light or dark setting.
+  (function () { var r = document.documentElement, p = null; try { p = JSON.parse(localStorage.getItem('ddr.pal')); } catch (e) {}
+    if (p && p.vars) { r.dataset.tone = p.tone; for (var k in p.vars) r.style.setProperty(k, p.vars[k]); }
+    else if (matchMedia('(prefers-color-scheme: light)').matches) r.dataset.tone = 'light'; })();
+</script>
+<style>
+@property --bg{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --bg-2{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --raise{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --raise-2{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --line{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --line-2{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --ink{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --ink-2{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --ink-3{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --sun{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --sun-soft{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --on-sun{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --glow-c{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --h1{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --h2{syntax:'<color>';inherits:true;initial-value:transparent}
+@property --h3{syntax:'<color>';inherits:true;initial-value:transparent}
+:root{--bg:#0B101A;--bg-2:#161C2B;--raise:#151A25;--raise-2:#1E242F;--line:rgba(237,236,244,0.08);--line-2:rgba(237,236,244,0.16);--ink:#EDECF4;--ink-2:#B6BECC;--ink-3:#939CAC;--sun:#E0DAF1;--sun-soft:rgba(224,218,241,0.13);--on-sun:#11161F;--glow-c:#DFE8FA;--h1:rgba(67,111,138,0.32);--h2:rgba(128,104,131,0.2);--h3:rgba(138,109,98,0.16);
+--sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--serif:"Newsreader","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;color-scheme:dark;
+transition:--bg 1.6s cubic-bezier(.45,.05,.25,1),--bg-2 1.6s cubic-bezier(.45,.05,.25,1),--raise 1.6s cubic-bezier(.45,.05,.25,1),--raise-2 1.6s cubic-bezier(.45,.05,.25,1),--line 1.6s cubic-bezier(.45,.05,.25,1),--line-2 1.6s cubic-bezier(.45,.05,.25,1),--ink 1.6s cubic-bezier(.45,.05,.25,1),--ink-2 1.6s cubic-bezier(.45,.05,.25,1),--ink-3 1.6s cubic-bezier(.45,.05,.25,1),--sun 1.6s cubic-bezier(.45,.05,.25,1),--sun-soft 1.6s cubic-bezier(.45,.05,.25,1),--on-sun 1.6s cubic-bezier(.45,.05,.25,1),--glow-c 1.6s cubic-bezier(.45,.05,.25,1),--h1 1.6s cubic-bezier(.45,.05,.25,1),--h2 1.6s cubic-bezier(.45,.05,.25,1),--h3 1.6s cubic-bezier(.45,.05,.25,1)}
+:root.instant{transition:none}
+:root[data-tone="light"]{--bg:#E1F1EC;--bg-2:#EEF9F6;--raise:#F0F9F7;--raise-2:#FBFEFD;--line:rgba(20,35,31,0.08);--line-2:rgba(20,35,31,0.15);--ink:#14231F;--ink-2:#3C4F4A;--ink-3:#556863;--sun:#1D332D;--sun-soft:rgba(29,51,45,0.08);--on-sun:#EEF5F3;--glow-c:#365B52;--h1:rgba(162,201,171,0.42);--h2:rgba(173,208,232,0.32);--h3:rgba(218,197,226,0.3);color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
+  overflow:hidden;overscroll-behavior:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;touch-action:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px;border-radius:12px}
+[hidden]{display:none!important}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* the space: a lit wash, three slow clouds of colour, the canvas of light, and a fine grain */
+.wash{position:fixed;inset:0;background:radial-gradient(130% 75% at 50% 0%,var(--bg-2) 0%,var(--bg) 62%);transition:background .6s}
+.haze{position:fixed;inset:0;overflow:hidden;pointer-events:none;opacity:.82;transition:opacity .25s linear}
+.haze i{position:absolute;width:110vmax;height:110vmax;border-radius:50%;will-change:transform;translate:var(--hx,0px) var(--hy,0px)}   /* the clouds drift with the phone inside a frame that never moves */
+.haze i:nth-child(1){left:-55vmax;top:-45vmax;background:radial-gradient(closest-side,var(--h1),transparent);animation:d1 64s ease-in-out infinite alternate}
+.haze i:nth-child(2){right:-60vmax;top:5vh;background:radial-gradient(closest-side,var(--h2),transparent);animation:d2 83s ease-in-out infinite alternate}
+.haze i:nth-child(3){left:-30vmax;bottom:-70vmax;background:radial-gradient(closest-side,var(--h3),transparent);animation:d3 97s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate(22vmax,18vmax) scale(1.12)}}
+@keyframes d2{to{transform:translate(-26vmax,24vmax) scale(.9)}}
+@keyframes d3{to{transform:translate(20vmax,-26vmax) scale(1.1)}}
+#field{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+.grain{position:fixed;inset:0;pointer-events:none;background-image:var(--grain);background-size:160px;opacity:.06;mix-blend-mode:overlay}
+:root[data-tone="light"] .grain{opacity:.1;mix-blend-mode:multiply}
+:root[data-tone="light"] .scrim{position:fixed;left:0;right:0;top:0;height:calc(env(safe-area-inset-top) + 6px);background:linear-gradient(rgba(28,34,48,.3),rgba(28,34,48,0));pointer-events:none}
+
+/* frame */
+.app{position:fixed;inset:0;display:grid;grid-template-rows:auto 1fr auto;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+header{display:flex;align-items:center;gap:2px;height:64px;padding:6px 10px 0 10px}
+.brand{flex:1;min-width:0}
+.ib svg.fill{fill:currentColor;stroke:none}
+.ib.faith{transition:background .2s,color .4s,filter .4s,opacity .5s cubic-bezier(.3,.6,.3,1)}
+.ib.faith[aria-pressed="true"]{color:var(--ink);filter:drop-shadow(0 0 7px color-mix(in srgb,var(--glow-c) 55%,transparent))}
+:root[data-tone="light"] .ib.faith[aria-pressed="true"]{filter:none}
+.ib.fly{transition:background .2s,color .4s,filter .4s,opacity .5s cubic-bezier(.3,.6,.3,1)}
+.ib.fly[aria-pressed="true"]{color:var(--ink);filter:drop-shadow(0 0 7px color-mix(in srgb,var(--glow-c) 55%,transparent))}
+:root[data-tone="light"] .ib.fly[aria-pressed="true"]{filter:none}
+@media (prefers-reduced-motion: reduce){ #flyBtn{display:none} }
+.ib{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--ink-2);transition:background .2s,color .2s,opacity .5s cubic-bezier(.3,.6,.3,1)}
+:root:not(.chrome) header .ib:not(#setBtn){opacity:0;pointer-events:none}
+:root:not(.chrome) #setBtn{opacity:.16}
+.ib svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ib:active{background:var(--sun-soft);color:var(--ink)}
+.ib:disabled{opacity:.28;cursor:default}
+.snd .off{display:none}
+:root[data-audio="muted"] .snd .on{display:none}
+:root[data-audio="muted"] .snd .off{display:block}
+
+/* the day */
+main{position:relative;display:flex;flex-direction:column;overflow:hidden;min-height:0}
+main.scrolls{overflow-y:auto;touch-action:pan-y;-webkit-overflow-scrolling:touch}
+.inner{margin:auto 0;padding:10px 30px 18px;width:100%;max-width:34rem;align-self:center;text-align:center;will-change:transform}
+.blk{position:relative}
+.w{font-family:var(--serif);font-weight:200;font-size:66px;font-variation-settings:"opsz" 72;line-height:1.05;letter-spacing:-.012em;white-space:nowrap;color:var(--ink);
+  text-shadow:0 0 28px color-mix(in srgb,var(--glow-c) 22%,transparent),0 0 2px color-mix(in srgb,var(--glow-c) 12%,transparent)}
+:root[data-tone="light"] .w{text-shadow:none}
+.w{cursor:pointer;transition:text-shadow .6s,opacity .6s}
+.w.speaking{text-shadow:0 0 34px color-mix(in srgb,var(--glow-c) 48%,transparent),0 0 3px color-mix(in srgb,var(--glow-c) 30%,transparent)}
+:root[data-tone="light"] .w.speaking{opacity:.72}
+.say{margin-top:12px;font-size:14px;color:var(--ink-2);letter-spacing:.03em}
+.say i{font-family:var(--serif);font-style:italic;font-weight:300;font-size:16px;letter-spacing:0;color:var(--ink-3);margin-left:.7em}
+.def{margin:20px auto 0;max-width:24em;font-size:18px;font-weight:300;line-height:1.5;text-wrap:balance}
+.ex{margin:12px auto 0;max-width:24em;font-family:var(--serif);font-size:17px;font-weight:300;font-variation-settings:"opsz" 16;line-height:1.45;color:var(--ink-2);text-wrap:balance}
+.mote{display:block;width:4px;height:4px;margin:30px auto;border-radius:50%;background:color-mix(in srgb,var(--glow-c) 70%,transparent);box-shadow:0 0 10px 2px color-mix(in srgb,var(--glow-c) 28%,transparent)}
+:root[data-tone="light"] .mote{background:color-mix(in srgb,var(--glow-c) 40%,transparent);box-shadow:none}
+.q{font-family:var(--serif);font-weight:300;font-size:24px;font-variation-settings:"opsz" 30;line-height:1.3;letter-spacing:-.004em;text-wrap:balance}
+.q .hang{margin-left:-.42em}
+.by{margin-top:12px;font-size:13px;color:var(--ink-3);letter-spacing:.03em}
+.setup{font-size:17px;line-height:1.45;text-wrap:balance}
+.reveal{margin-top:14px;height:44px;padding:0 20px;border-radius:22px;border:1px solid var(--line-2);color:var(--ink-2);font-size:14px;letter-spacing:.01em;transition:background .2s,border-color .2s}
+.reveal:active{background:var(--sun-soft);border-color:transparent}
+.punch{margin-top:14px;min-height:44px;font-size:17px;font-weight:500;line-height:1.45;text-wrap:balance}
+.punch.in{animation:develop .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes develop{from{opacity:0;filter:blur(8px);transform:scale(1.025)}to{opacity:1;filter:blur(0);transform:none}}
+@keyframes rise{from{opacity:0}to{opacity:1}}
+
+/* a verse: one line from a scripture, in place of the set, with the way back beneath it */
+.vbook{font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
+.vq{margin:0 auto;max-width:20em;font-family:var(--serif);font-weight:300;font-size:27px;font-variation-settings:"opsz" 30;line-height:1.32;letter-spacing:-.004em;text-wrap:balance;
+  text-shadow:0 0 30px color-mix(in srgb,var(--glow-c) 14%,transparent)}
+:root[data-tone="light"] .vq{text-shadow:none}
+.vblk .by{margin-top:18px}
+.vmsg{margin:0 auto;max-width:18em;font-size:17px;font-weight:300;line-height:1.5;color:var(--ink-2);text-wrap:balance}
+.vblk .drift{margin:0 auto;transform:scale(.72)}
+.back{display:grid;place-items:center;width:48px;height:48px;margin:38px auto 0;border-radius:50%;color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--line-2);transition:background .2s,color .2s,box-shadow .2s}
+.back svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.back:active{background:var(--sun-soft);color:var(--ink);box-shadow:inset 0 0 0 1px transparent}
+
+
+/* pull for a new set, loading, empty */
+.pull{position:absolute;left:50%;top:0;margin-left:-15px;width:30px;height:30px;display:grid;place-items:center;opacity:0;pointer-events:none;color:var(--ink-2);transition:opacity .25s;
+  filter:drop-shadow(0 0 5px color-mix(in srgb,var(--glow-c) 55%,transparent))}
+:root[data-tone="light"] .pull{filter:none}
+.pull .spinner{width:26px;height:26px;animation:none}
+.pull.ready .spinner,.pull.busy .spinner{color:var(--ink)}
+.pull.busy .spinner{animation:spin 1.05s linear infinite}
+/* the comet: a bright head and a tail that thins and fades (drawn smooth at start-up; this is the fallback) */
+:root{--comet:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19.8 15.7L20.3 14.5L19.8 14.3L19.3 15.5Z' fill-opacity='0.03'/%3E%3Cpath d='M19.3 16.8L19.9 15.6L19.4 15.4L18.7 16.5Z' fill-opacity='0.04'/%3E%3Cpath d='M18.6 17.8L19.4 16.7L18.8 16.3L18.0 17.3Z' fill-opacity='0.05'/%3E%3Cpath d='M17.7 18.7L18.7 17.7L18.1 17.2L17.2 18.1Z' fill-opacity='0.07'/%3E%3Cpath d='M16.8 19.4L17.9 18.6L17.3 18.0L16.3 18.7Z' fill-opacity='0.09'/%3E%3Cpath d='M15.7 20.1L16.9 19.4L16.4 18.6L15.3 19.2Z' fill-opacity='0.10'/%3E%3Cpath d='M14.6 20.5L15.9 20.0L15.4 19.1L14.3 19.5Z' fill-opacity='0.12'/%3E%3Cpath d='M13.4 20.9L14.7 20.5L14.4 19.5L13.2 19.7Z' fill-opacity='0.14'/%3E%3Cpath d='M12.2 21.0L13.6 20.8L13.4 19.7L12.2 19.8Z' fill-opacity='0.17'/%3E%3Cpath d='M10.9 21.0L12.3 21.0L12.3 19.8L11.1 19.7Z' fill-opacity='0.19'/%3E%3Cpath d='M9.7 20.8L11.1 21.0L11.2 19.7L10.1 19.4Z' fill-opacity='0.21'/%3E%3Cpath d='M8.5 20.5L9.8 20.9L10.2 19.5L9.1 19.0Z' fill-opacity='0.24'/%3E%3Cpath d='M7.3 19.9L8.6 20.5L9.2 19.1L8.1 18.5Z' fill-opacity='0.27'/%3E%3Cpath d='M6.2 19.3L7.4 20.0L8.3 18.6L7.3 17.9Z' fill-opacity='0.29'/%3E%3Cpath d='M5.3 18.4L6.4 19.4L7.4 18.0L6.6 17.2Z' fill-opacity='0.32'/%3E%3Cpath d='M4.4 17.5L5.4 18.5L6.7 17.3L6.0 16.3Z' fill-opacity='0.35'/%3E%3Cpath d='M3.7 16.4L4.5 17.6L6.0 16.4L5.5 15.4Z' fill-opacity='0.38'/%3E%3Cpath d='M3.1 15.2L3.7 16.5L5.5 15.6L5.1 14.5Z' fill-opacity='0.42'/%3E%3Cpath d='M2.7 14.0L3.2 15.4L5.1 14.6L4.9 13.5Z' fill-opacity='0.45'/%3E%3Cpath d='M2.5 12.7L2.7 14.1L4.9 13.6L4.8 12.5Z' fill-opacity='0.48'/%3E%3Cpath d='M2.4 11.4L2.5 12.8L4.8 12.6L4.8 11.5Z' fill-opacity='0.52'/%3E%3Cpath d='M2.5 10.0L2.4 11.5L4.8 11.6L5.0 10.5Z' fill-opacity='0.56'/%3E%3Cpath d='M2.8 8.7L2.5 10.2L5.0 10.7L5.3 9.6Z' fill-opacity='0.59'/%3E%3Cpath d='M3.3 7.5L2.8 8.9L5.3 9.7L5.8 8.7Z' fill-opacity='0.63'/%3E%3Cpath d='M4.0 6.3L3.3 7.6L5.7 8.8L6.3 7.9Z' fill-opacity='0.67'/%3E%3Cpath d='M4.8 5.2L3.9 6.4L6.3 8.0L7.0 7.2Z' fill-opacity='0.71'/%3E%3Cpath d='M5.8 4.2L4.7 5.3L6.9 7.3L7.7 6.6Z' fill-opacity='0.75'/%3E%3Cpath d='M6.9 3.4L5.7 4.3L7.6 6.7L8.5 6.1Z' fill-opacity='0.80'/%3E%3Cpath d='M8.1 2.7L6.8 3.5L8.4 6.2L9.4 5.8Z' fill-opacity='0.84'/%3E%3Cpath d='M9.4 2.2L8.0 2.8L9.3 5.8L10.3 5.5Z' fill-opacity='0.88'/%3E%3Cpath d='M10.8 1.9L9.2 2.3L10.2 5.5L11.2 5.4Z' fill-opacity='0.93'/%3E%3Cpath d='M12.2 1.8L10.6 2.0L11.1 5.4L12.1 5.4Z' fill-opacity='0.98'/%3E%3Ccircle cx='12' cy='3.6' r='1.8'/%3E%3C/svg%3E")}
+.spinner,.ib.busy::after{display:inline-block;width:14px;height:14px;background:currentColor;-webkit-mask:var(--comet) center/contain no-repeat;mask:var(--comet) center/contain no-repeat;animation:spin 1.05s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ib.busy{position:relative}
+.ib.busy svg{opacity:0}
+.ib.busy::after{content:"";position:absolute;inset:50% auto auto 50%;width:16px;height:16px;margin:-8px 0 0 -8px}
+.empty{display:grid;justify-items:center;gap:16px;padding:40px 0;font-size:17px;font-weight:300;line-height:1.5;color:var(--ink-2)}
+/* the loader: a breathing point of light, ripples leaving it, three motes in slow orbit */
+.drift{position:relative;width:132px;height:132px}
+.drift > span{position:absolute;left:50%;top:50%}
+.drift .core{width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--ink);
+  box-shadow:0 0 18px 4px color-mix(in srgb,var(--glow-c) 45%,transparent),0 0 46px 14px color-mix(in srgb,var(--glow-c) 16%,transparent);animation:breathe 2.6s ease-in-out infinite}
+.drift .ring{width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--glow-c) 60%,transparent);opacity:0;animation:ripple 3.6s cubic-bezier(.2,.6,.3,1) infinite}
+.drift .ring:nth-child(2){animation-delay:1.2s}
+.drift .ring:nth-child(3){animation-delay:2.4s}
+.drift .orbit{width:0;height:0;animation:orbit 6s linear infinite}
+.drift .orbit i{position:absolute;width:4px;height:4px;margin:-2px;border-radius:50%;background:var(--glow-c);box-shadow:0 0 8px 2px color-mix(in srgb,var(--glow-c) 35%,transparent)}
+.drift .o1 i{transform:translateX(26px)}
+.drift .o2{animation-duration:9.5s;animation-direction:reverse}
+.drift .o2 i{transform:translateX(41px);width:3px;height:3px;opacity:.8}
+.drift .o3{animation-duration:14s}
+.drift .o3 i{transform:translateX(56px);width:2.5px;height:2.5px;opacity:.6}
+@keyframes breathe{0%,100%{transform:scale(.82);opacity:.85}50%{transform:scale(1.18);opacity:1}}
+@keyframes ripple{0%{transform:scale(.08);opacity:0}15%{opacity:.75}100%{transform:scale(1);opacity:0}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.empty .later{animation:later .8s 1.4s both}
+@keyframes later{from{opacity:0}to{opacity:1}}
+.empty p{max-width:18em;text-wrap:balance}
+/* while loading, the line sits under the loader so the loader itself is dead centre, where the launch screen's glyph was */
+.empty.loading{position:relative;padding:0;margin-top:12px}
+.empty.loading #emptyMsg{position:absolute;left:50%;top:calc(100% + 18px);width:18em;max-width:80vw;transform:translateX(-50%)}
+#pos.solo{margin-left:0}
+.toast{position:fixed;inset:auto auto calc(env(safe-area-inset-bottom) + 84px) 50%;margin:0;border:0;width:max-content;max-width:calc(100vw - 40px);transform:translate(-50%,8px);opacity:0;
+  display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:22px;background:var(--raise-2);color:var(--ink);font-size:14px;line-height:1.4;box-shadow:0 12px 40px rgba(0,0,0,.3);transition:opacity .3s,transform .3s cubic-bezier(.2,.8,.2,1);z-index:50}
+.toast:not(:popover-open):not(.show){display:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast .spinner{flex:none}
+
+/* bottom bar */
+nav{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px;height:68px;padding:0 14px 6px}
+.mid{display:grid;place-items:center;text-align:center;font-size:13px;line-height:1.35;color:var(--ink-3);min-height:44px}
+.mid > *{grid-area:1/1;transition:opacity .4s}
+.mid .hide{opacity:0;pointer-events:none;visibility:hidden}
+
+/* sheets */
+dialog.sheet{position:fixed;inset:auto 0 0 0;margin:0 auto;width:100%;max-width:34rem;max-height:88dvh;padding:0 22px calc(18px + env(safe-area-inset-bottom));border:0;border-radius:26px 26px 0 0;background:var(--raise);color:var(--ink);box-shadow:0 -10px 50px rgba(0,0,0,.3);overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y}
+dialog.sheet[open]{animation:sheetIn .38s cubic-bezier(.2,.85,.2,1)}
+dialog.sheet.closing{animation:sheetOut .22s cubic-bezier(.4,0,1,1) forwards}
+dialog.sheet::backdrop{background:rgba(4,6,12,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+:root[data-tone="light"] dialog.sheet::backdrop{background:rgba(30,36,50,.24)}
+@keyframes sheetIn{from{transform:translateY(100%)}}
+@keyframes sheetOut{to{transform:translateY(100%)}}
+.grab{height:28px;display:grid;place-items:center;touch-action:none}
+.grab::before{content:"";width:38px;height:5px;border-radius:3px;background:var(--line-2)}
+.sheet h2{font-weight:500;font-size:18px;padding:2px 0 8px;touch-action:none}
+.set{display:flex;align-items:center;gap:16px;min-height:60px;border-bottom:1px solid var(--line)}
+.set label,.set .lab{flex:none;width:7.5em;font-size:16px}
+.set input[type=range]{flex:1}
+.set .sub{flex:1;text-align:right;font-size:13px;color:var(--ink-3)}
+.note{font-size:13px;line-height:1.5;color:var(--ink-3);padding:10px 0 0}
+.credit{text-align:right;font-family:var(--serif);font-style:italic;font-weight:300;font-size:15px;line-height:1.5;color:var(--ink-3);padding:8px 0 0}
+.credit + .credit{padding-top:2px}
+.about{font-size:15px;font-weight:300;line-height:1.55;color:var(--ink-2);padding:18px 0 0}
+.btn{display:block;width:100%;height:50px;margin-top:22px;border-radius:25px;background:var(--sun);color:var(--on-sun);font-weight:500;font-size:16px}
+
+.seg{margin-left:auto;display:flex;padding:3px;border-radius:14px;background:var(--line)}
+.seg button{height:38px;min-width:58px;padding:0 12px;border-radius:11px;font-size:14px;color:var(--ink-2);transition:background .2s,color .2s}
+.seg button[aria-checked="true"]{background:var(--raise-2);color:var(--ink);box-shadow:0 1px 5px rgba(0,0,0,.16)}
+.mini{margin-left:auto;height:38px;padding:0 18px;border-radius:19px;background:var(--sun);color:var(--on-sun);font-size:14px;font-weight:500}
+.link{margin-left:auto;min-height:44px;padding:0 2px;font-size:15px;color:var(--ink-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:4px}
+.welcome{text-align:center}
+.ins-mark{display:grid;place-items:center;padding:6px 0 14px}
+.ins-mark img{width:72px;height:72px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 0 1px var(--line)}
+.welcome h2{font-family:var(--serif);font-weight:300;font-size:30px;font-variation-settings:"opsz" 36;letter-spacing:-.01em;line-height:1.15;padding:0;text-wrap:balance}
+.ins-lead{margin:10px auto 0;max-width:22em;font-size:16px;font-weight:300;line-height:1.5;color:var(--ink-2);text-wrap:balance}
+.steps{list-style:none;counter-reset:s;margin:22px 0 4px;text-align:left;border-top:1px solid var(--line)}
+.steps li{text-wrap:pretty;counter-increment:s;position:relative;padding:14px 0 14px 44px;font-size:16px;line-height:1.5;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:13px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:500;color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--line-2);font-variant-numeric:tabular-nums}
+.steps b{font-weight:500}
+.glyph{display:inline-block;width:20px;height:20px;vertical-align:-4px;margin:0 1px;fill:var(--ink)}
+.glyph.line{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.btn.quiet{margin-top:8px;background:none;color:var(--ink-2);font-weight:400}
+input[type=range]{-webkit-appearance:none;appearance:none;height:44px;background:transparent;--v:50%}
+input[type=range]::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--sun) var(--v),var(--line-2) var(--v))}
+input[type=range]::-moz-range-track{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--sun) var(--v),var(--line-2) var(--v))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;margin-top:-10.5px;border-radius:50%;background:var(--ink);box-shadow:0 2px 10px rgba(0,0,0,.3)}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radius:50%;background:var(--ink)}
+.switch{position:relative;width:52px;height:32px;border-radius:16px;background:var(--line-2);transition:background .25s;flex:none;margin-left:auto}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:var(--ink);transition:transform .28s cubic-bezier(.3,.7,.2,1)}
+.switch[aria-checked="true"]{background:var(--sun)}
+.switch[aria-checked="true"]::after{transform:translateX(20px);background:var(--on-sun)}
+.set.open{border-bottom-color:transparent}
+.faiths{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:2px 0 16px;border-bottom:1px solid var(--line)}
+.chip{display:flex;align-items:center;gap:8px;height:46px;padding:0 12px 0 16px;border-radius:15px;font-size:15px;color:var(--ink-2);text-align:left;box-shadow:inset 0 0 0 1px var(--line-2);transition:background .2s,color .2s,box-shadow .2s}
+.chip svg{flex:none;width:18px;height:18px;margin-left:auto;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:0;transform:scale(.5);transition:opacity .2s,transform .3s cubic-bezier(.3,.7,.2,1.3)}
+.chip[aria-pressed="true"]{background:var(--sun-soft);color:var(--ink);box-shadow:inset 0 0 0 1px transparent}
+.chip[aria-pressed="true"] svg{opacity:1;transform:none}
+
+/* long sets tighten up before they ever scroll */
+main.dense .w{font-size:56px}
+main.dense .say{margin-top:8px}
+main.dense .def{margin-top:14px;font-size:17px;line-height:1.45}
+main.dense .ex{margin-top:8px;font-size:16px}
+main.dense .mote{margin:18px auto}
+main.dense .q{font-size:21px}
+main.dense .by{margin-top:8px}
+main.dense .setup,main.dense .punch{font-size:16px}
+main.dense .reveal,main.dense .punch{margin-top:10px}
+main.dense .vq{font-size:23px}
+main.dense .vbook{margin-bottom:16px}
+main.dense .back{margin-top:26px}
+@media (max-height: 780px){
+  .vq{font-size:24px}
+  .back{margin-top:30px}
+  header{height:56px}
+  .w{font-size:56px}
+  .say{margin-top:8px}
+  .def{margin-top:14px;font-size:17px;line-height:1.45}
+  .ex{margin-top:8px;font-size:16px}
+  .mote{margin:20px auto}
+  .q{font-size:21px}
+  .by{margin-top:8px}
+  .setup,.punch{font-size:16px}
+  .reveal,.punch{margin-top:10px}
+  nav{height:58px}
+  .empty.loading{margin-top:10px}
+}
+@media (prefers-reduced-motion: reduce){
+  .haze i,.punch.in,dialog.sheet[open],dialog.sheet.closing{animation:none!important}
+  .spinner,.ib.busy::after,.pull.busy .spinner{animation-duration:1.6s!important}
+  .drift .core,.drift .ring{animation-duration:6s!important}
+  .drift .orbit{animation-duration:16s!important}
+  .inner{will-change:auto}
+}
+</style>
+</head>
+<body>
+<div class="wash"></div>
+<div class="haze" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="scrim" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-snd" viewBox="0 0 24 24"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9.2a4 4 0 0 1 0 5.6M18 6.8a7.4 7.4 0 0 1 0 10.4"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3.5v11.5M8 7.5l4-4 4 4"/><path d="M8.5 10.5H6v10h12v-10h-2.5"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M14.5 5.5L8 12l6.5 6.5"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9.5 5.5L16 12l-6.5 6.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+  <symbol id="i-tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-fly" viewBox="0 0 24 24"><path d="M12.00 9.40L12.00 3.60M14.59 8.69L16.56 6.17M14.85 11.07L20.75 9.16M16.70 13.71L19.14 14.60M13.48 14.37L16.35 18.95M11.52 16.57L11.16 19.96M9.60 14.40L5.64 18.36M6.88 12.90L4.52 13.32M9.28 10.73L5.29 8.87"/><circle cx="12" cy="12" r="0.95" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M10.5 6.5L5 12l5.5 5.5M5.5 12H19"/></symbol>
+  <!-- praying hands: Phosphor Icons (MIT) -->
+  <symbol id="i-pray" viewBox="0 0 256 256"><path d="M235.32,180l-36.24-36.25L162.62,23.46A21.76,21.76,0,0,0,128,12.93,21.76,21.76,0,0,0,93.38,23.46L56.92,143.76,20.68,180a16,16,0,0,0,0,22.62l32.69,32.69a16,16,0,0,0,22.63,0L124.28,187a40.68,40.68,0,0,0,3.72-4.29,40.68,40.68,0,0,0,3.72,4.29L180,235.32a16,16,0,0,0,22.63,0l32.69-32.69A16,16,0,0,0,235.32,180ZM64.68,224,32,191.32l12.69-12.69,32.69,32.69ZM120,158.75a23.85,23.85,0,0,1-7,17L88.68,200,56,167.32l13.65-13.66a8,8,0,0,0,2-3.34l37-122.22A5.78,5.78,0,0,1,120,29.78Zm23,17a23.85,23.85,0,0,1-7-17v-129a5.78,5.78,0,0,1,11.31-1.68l37,122.22a8,8,0,0,0,2,3.34l14.49,14.49-33.4,32ZM191.32,224l-12.56-12.57,33.39-32L224,191.32Z"/></symbol>
+</svg>
+
+<div class="app">
+  <header>
+    <button class="ib faith" id="faithBtn" data-act="verse" aria-label="A verse" aria-pressed="false" title="A verse" hidden><svg class="fill"><use href="#i-pray"/></svg></button>
+    <div class="brand"><p class="vh" id="date" aria-live="polite"></p></div>
+    <button class="ib fly" id="flyBtn" data-act="fly" aria-label="Fly through the stars" aria-pressed="false" title="Fly"><svg><use href="#i-fly"/></svg></button>
+    <button class="ib snd" id="sndBtn" data-act="sound" aria-label="Turn the sound off" title="Sound"><svg class="on"><use href="#i-snd"/></svg><svg class="off"><use href="#i-mute"/></svg></button>
+    <button class="ib" id="themeBtn" data-act="theme" aria-label="Change colours" title="Change colours"><svg><use href="#i-eye"/></svg></button>
+    <button class="ib" id="shareBtn" data-act="share" aria-label="Share this as a picture" title="Share"><svg><use href="#i-share"/></svg></button>
+    <button class="ib" id="setBtn" data-act="settings" aria-label="Open settings" title="Settings"><svg><use href="#i-sliders"/></svg></button>
+  </header>
+  <main id="day" aria-live="polite">
+    <div class="pull" id="pull" aria-hidden="true"><span class="spinner"></span></div>
+    <div class="inner" id="inner">
+      <div class="empty loading" id="empty">
+        <div class="drift" id="drift" role="img" aria-label="Loading">
+          <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+          <span class="orbit o1"><i></i></span><span class="orbit o2"><i></i></span><span class="orbit o3"><i></i></span>
+          <span class="core"></span>
+        </div>
+        <p id="emptyMsg" class="later">Gathering today’s word, quote and joke…</p>
+        <button class="reveal" id="retryBtn" data-act="retry" hidden>Try again</button>
+      </div>
+      <section class="blk" id="wordBlk" hidden aria-label="Word of the day">
+        <h1 class="w" id="w" role="button" tabindex="0" aria-label="Hear the word"></h1>
+        <p class="say"><span id="pron"></span><i id="pos"></i></p>
+        <p class="def" id="def"></p>
+        <p class="ex" id="ex"></p>
+      </section>
+      <span class="mote" aria-hidden="true" hidden></span>
+      <section class="blk" id="quoteBlk" hidden aria-label="Quote of the day">
+        <p class="q" id="q"></p>
+        <p class="by" id="by"></p>
+      </section>
+      <span class="mote" aria-hidden="true" hidden></span>
+      <section class="blk" id="jokeBlk" hidden aria-label="Joke of the day">
+        <p class="setup" id="setup"></p>
+        <div id="pl"></div>
+      </section>
+      <section class="vblk" id="verseBlk" hidden aria-label="A verse">
+        <div class="drift" id="vdrift" role="img" aria-label="Finding a verse" hidden>
+          <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+          <span class="orbit o1"><i></i></span><span class="orbit o2"><i></i></span><span class="orbit o3"><i></i></span>
+          <span class="core"></span>
+        </div>
+        <div id="vtext">
+          <p class="vbook" id="vbook"></p>
+          <p class="vq" id="vq"></p>
+          <p class="by" id="vby"></p>
+        </div>
+        <p class="vmsg" id="vmsg" hidden></p>
+        <button class="back" id="backBtn" data-act="back" aria-label="Back to the word, quote and joke" title="Back"><svg><use href="#i-back"/></svg></button>
+      </section>
+    </div>
+  </main>
+  <nav aria-label="Days">
+    <button class="ib" id="prevBtn" data-act="prev" aria-label="Earlier set" title="Earlier set"><svg><use href="#i-prev"/></svg></button>
+    <div class="mid">
+      <p id="hintSound">Touch or swipe to begin the sound</p>
+      <p id="hintPull" class="hide">Pull the words down for a new set</p>
+      <p id="hintSay" class="hide">Tap the word to hear it</p>
+      <p id="hintFaith" class="hide">You can add faith verses in Settings</p>
+      <p id="hintVerse" class="hide">Pull down for another verse</p>
+    </div>
+    <button class="ib" id="nextBtn" data-act="next" aria-label="Later set" title="Later set"><svg><use href="#i-next"/></svg></button>
+  </nav>
+</div>
+
+<dialog class="sheet" id="settings" aria-labelledby="setTitle">
+  <div class="grab" data-drag aria-hidden="true"></div>
+  <h2 id="setTitle" data-drag>Settings</h2>
+  <div class="set"><label for="vMusic">Music</label><input id="vMusic" type="range" min="0" max="100" step="1"></div>
+  <div class="set"><label for="vTouch">Touch sounds</label><input id="vTouch" type="range" min="0" max="100" step="1"></div>
+  <div class="set" id="hapRow"><span class="lab" id="hapLab">Haptics</span><button class="switch" id="hapSw" role="switch" aria-labelledby="hapLab" data-act="haptics"></button></div>
+  <div class="set" id="motionRow"><span class="lab" id="motionLab">Motion</span><button class="switch" id="motionSw" role="switch" aria-labelledby="motionLab" data-act="motion"></button></div>
+  <div class="set"><span class="lab">New set</span><button class="link" data-act="newSet">Get a new set</button></div>
+  <div class="set"><span class="lab" id="toneLab">Colours</span><div class="seg" role="radiogroup" aria-labelledby="toneLab"><button role="radio" data-act="tone" data-v="both">Both</button><button role="radio" data-act="tone" data-v="dark">Dark</button><button role="radio" data-act="tone" data-v="light">Light</button></div></div>
+  <div class="set" id="faithRow"><span class="lab" id="faithLab">Faith</span><button class="switch" id="faithSw" role="switch" aria-labelledby="faithLab" data-act="faith"></button></div>
+  <div class="faiths" id="faiths" role="group" aria-label="Faiths" hidden>
+    <button class="chip" data-act="faithPick" data-v="buddhism" aria-pressed="false">Buddhism<svg><use href="#i-tick"/></svg></button>
+    <button class="chip" data-act="faithPick" data-v="christianity" aria-pressed="false">Christianity<svg><use href="#i-tick"/></svg></button>
+    <button class="chip" data-act="faithPick" data-v="hinduism" aria-pressed="false">Hinduism<svg><use href="#i-tick"/></svg></button>
+    <button class="chip" data-act="faithPick" data-v="sikhism" aria-pressed="false">Sikhism<svg><use href="#i-tick"/></svg></button>
+  </div>
+  <p class="note" id="faithNote" hidden></p>
+  <div class="set" id="insRow"><span class="lab">Install</span><span class="sub" id="insState" hidden>Installed on this phone</span><button class="mini" id="insBtn" data-act="installNow">Install</button></div>
+  <p class="note" id="insNote"></p>
+  <p class="note">The eye button changes the colours. Here you choose the tones it moves through.</p>
+  <p class="note" id="setNote"></p>
+  <p class="about">A new word, quote and joke arrive each day when you open the app, with music composed on your phone to go with them. Pull the words down for another set, and use the arrows to look back. Every set stays on this phone.</p>
+  <p class="credit">Built by Big Bear Binary</p>
+  <p class="credit">Release 15</p>
+  <button class="btn" data-act="closeSheet">Done</button>
+</dialog>
+
+<div id="toast" class="toast" popover="manual" role="status" aria-live="polite"></div>
+
+<dialog class="sheet welcome" id="install" aria-labelledby="insTitle">
+  <div class="grab" data-drag aria-hidden="true"></div>
+  <div class="ins-mark" data-drag aria-hidden="true"><img src="icon.svg" alt="" width="72" height="72"></div>
+  <h2 id="insTitle" data-drag>Install Daily Drift</h2>
+  <p class="ins-lead" id="insLead"></p>
+  <ol class="steps" id="insSteps"></ol>
+  <button class="btn" id="insGo" data-act="closeSheet">Got it</button>
+  <button class="btn quiet" id="insLater" data-act="closeSheet" hidden>Not now</button>
+</dialog>
+
+<script src="core.js?v=15"></script>
+<script src="sound.js?v=15"></script>
+<script>
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const P = 'ddr.';
+const get = (k, d) => { try { const v = localStorage.getItem(P + k); return v == null ? d : JSON.parse(v); } catch { return d; } };
+const put = (k, v) => { try { localStorage.setItem(P + k, JSON.stringify(v)); } catch {} };
+const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const isAndroid = /Android/.test(navigator.userAgent);
+const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const reducedMQ = matchMedia('(prefers-reduced-motion: reduce)');
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const today0 = Core.dayNumber(new Date());
+const S = {
+  today: today0,
+  sets: get('sets', []),            // every set fetched, oldest first, kept on this phone
+  i: 0,                             // the set on screen
+  themeN: get('themeN', document.documentElement.dataset.tone === 'light' ? 2 : 0), tone: get('tone', 'both'),
+  music: get('music', 70), touchVol: get('touch', 80), haptics: get('haptics', true),
+  muted: get('muted', false), pulled: get('pulled', false), heard: get('heard', false), motion: get('motion', true), fly: get('fly', false),
+  busy: false, loading: false,
+  // faith: off until chosen in Settings; the verses seen are kept on this phone too
+  faith: get('faith', false), faiths: get('faiths', []), verses: get('verses', []), vi: 0, vpulled: get('vpulled', false),
+  view: 'set', vwait: false, vmsg: '', vloading: false, empty: 'loading',
+  // the fourth hint, pointing to Faith: it retires once Settings is opened, Faith is on, or it has shown on three opens
+  faithHintN: get('faithHintN', 0), faithHinted: get('faithHinted', false),
+};
+if (!Array.isArray(S.sets)) S.sets = [];
+if (!Array.isArray(S.faiths)) S.faiths = [];
+const canFaith = Array.isArray(Core.FAITHS);   // false only for a moment after an update, if the phone still holds the old core.js
+S.faiths = canFaith ? S.faiths.filter((f) => Core.FAITHS.includes(f)) : [];
+if (!Array.isArray(S.verses)) S.verses = [];
+S.vi = Math.max(0, S.verses.length - 1);
+const faithOn = () => canFaith && S.faith && S.faiths.length > 0;
+const verseNow = () => (S.view === 'faith' && !S.vwait && !S.vmsg && S.verses[S.vi]) || null;
+S.i = Math.max(0, S.sets.length - 1);
+const cur = () => S.sets[S.i] || null;
+const latest = () => S.sets[S.sets.length - 1] || null;
+const pieceNow = () => Core.piece(cur() ? cur().seed : S.today);
+const saveSets = () => { S.sets = S.sets.slice(-400); put('sets', S.sets); };
+
+/* ---------------- rendering ---------------- */
+function setLabel(i) {
+  const set = S.sets[i]; if (!set) return Core.dayLabel(S.today, S.today);
+  const same = S.sets.filter((x) => x.day === set.day), k = same.indexOf(set) + 1;
+  return Core.dayLabel(set.day, S.today) + (same.length > 1 ? ` · ${k} of ${same.length}` : '');
+}
+
+function render() {
+  const faith = S.view === 'faith';
+  $('#verseBlk').hidden = !faith;
+  $('#faithBtn').setAttribute('aria-pressed', String(faith));
+  if (faith) {
+    document.querySelectorAll('.blk, .inner > .mote').forEach((el) => { el.hidden = true; });
+    $('#empty').hidden = true;
+    renderVerse();
+    renderNav(); fit(); queueShareImage();
+    return;
+  }
+  const set = cur();
+  if (set) S.shown = true;
+  document.querySelectorAll('.blk, .inner > .mote').forEach((el) => { el.hidden = !set; });
+  $('#empty').hidden = !!set;
+  if (!set) applyEmpty();
+  $('#date').textContent = setLabel(S.i);
+  if (set) {
+    $('#w').textContent = set.w.w;
+    $('#w').setAttribute('aria-label', 'Hear “' + set.w.w + '”');
+    $('#pron').textContent = set.w.ipa || '';
+    $('#pos').textContent = set.w.pos || '';
+    $('#pos').classList.toggle('solo', !set.w.ipa);
+    $('#def').textContent = set.w.d;
+    $('#ex').textContent = set.w.e ? '“' + set.w.e + '”' : '';
+    $('#ex').hidden = !set.w.e;
+    const qEl = $('#q'); qEl.textContent = '';
+    const h = document.createElement('span'); h.className = 'hang'; h.textContent = '“';
+    qEl.append(h, set.q.q + '”');
+    $('#by').textContent = set.q.a;
+    $('#setup').textContent = set.j.s;
+    $('#wordBlk').setAttribute('aria-label', 'Word for ' + setLabel(S.i));
+    renderPunch(false);
+  }
+  renderNav();
+  fit();
+  queueShareImage();
+}
+
+function renderPunch(fresh) {
+  const pl = $('#pl'); pl.textContent = '';
+  const set = cur(); if (!set || !set.j.p) return;
+  if (set.rev) {
+    const p = document.createElement('p'); p.className = 'punch' + (fresh ? ' in' : ''); p.id = 'punch'; p.textContent = set.j.p; pl.append(p);
+  } else {
+    const b = document.createElement('button'); b.className = 'reveal'; b.dataset.act = 'reveal'; b.textContent = 'Show the punchline'; pl.append(b);
+  }
+}
+
+let faithHintCounted = false;
+function renderVerse() {
+  const v = verseNow();
+  $('#vdrift').hidden = !S.vwait;
+  $('#vtext').hidden = !v;
+  $('#vmsg').hidden = !S.vmsg || S.vwait;
+  $('#vmsg').textContent = S.vmsg;
+  $('#date').textContent = v ? 'A verse from the ' + Core.FAITH[v.f].book.replace(/^The /, '') : 'A verse';
+  if (!v) return;
+  $('#vbook').textContent = Core.FAITH[v.f].book;
+  $('#vq').textContent = v.t;
+  $('#vby').textContent = Core.verseCite(v);
+}
+
+function renderNav() {
+  const audioOff = document.documentElement.dataset.audio === 'off';
+  let hint;
+  if (S.view === 'faith') {
+    $('#prevBtn').disabled = S.vwait || S.vi <= 0 || !S.verses.length;
+    $('#nextBtn').disabled = S.vwait || S.vi >= S.verses.length - 1;
+    hint = audioOff ? 'sound' : !S.vpulled && verseNow() ? 'verse' : '';
+  } else {
+    $('#prevBtn').disabled = S.i <= 0;
+    $('#nextBtn').disabled = S.i >= S.sets.length - 1;
+    const past = S.i < S.sets.length - 1;
+    const faithHint = canFaith && !S.faith && !S.faithHinted && S.faithHintN < 3;
+    hint = past ? '' : audioOff ? 'sound' : !S.pulled && cur() ? 'pull' : !S.heard && cur() && canSpeak ? 'say' : faithHint && cur() ? 'faith' : '';
+    if (hint === 'faith' && !faithHintCounted) { faithHintCounted = true; put('faithHintN', S.faithHintN + 1); }
+  }
+  $('#hintSound').classList.toggle('hide', hint !== 'sound');
+  $('#hintPull').classList.toggle('hide', hint !== 'pull');
+  $('#hintSay').classList.toggle('hide', hint !== 'say');
+  $('#hintFaith').classList.toggle('hide', hint !== 'faith');
+  $('#hintVerse').classList.toggle('hide', hint !== 'verse');
+}
+
+// The word fills its line but never overflows it; long pages scroll on small phones.
+function fit() {
+  const w = $('#w'); w.style.fontSize = '';
+  const max = w.clientWidth, need = w.scrollWidth;
+  if (need > max) w.style.fontSize = Math.floor(parseFloat(getComputedStyle(w).fontSize) * (max / need) * 0.98) + 'px';
+  const m = $('#day'); m.classList.remove('scrolls', 'dense');
+  if (m.scrollHeight > m.clientHeight + 1) {
+    m.classList.add('dense');
+    w.style.fontSize = '';
+    if (w.scrollWidth > w.clientWidth) w.style.fontSize = Math.floor(parseFloat(getComputedStyle(w).fontSize) * (w.clientWidth / w.scrollWidth) * 0.98) + 'px';
+  }
+  m.classList.toggle('scrolls', m.scrollHeight > m.clientHeight + 1);
+}
+
+/* ---------------- light field ---------------- */
+const Field = (() => {
+  const cv = $('#field'), g = cv.getContext('2d'), hazeEl = document.querySelector('.haze');
+  let W = 0, H = 0, motes = [], col = [222, 228, 245], blend = 'lighter', light = false, last = 0, raf = 0, glide = null;
+  let auraA = [92, 110, 180], auraB = [146, 118, 172];   // the theme's two haze colours: the touch tints between them
+  let E = 0, hazeShown = -1, motion = 0, glinting = 0;
+  let panX = 0, panY = 0, panTotal = 0, hzX = 0, hzY = 0, hzShown = '';   // moving with the phone: stars pan, the clouds drift and settle
+  // Flight: the stars become a deep field rushing past. flyV is the speed (depth per second), flyK blends their size.
+  let flyOn = false, flyV = 0, flyK = 0, deep = false, vpOX = 0, vpOY = 0, baseN = 0;
+  const FLY_CRUISE = 0.09, FLY_TOP = 2.2;
+  const aura = { x: 0, y: 0, mix: 0.5, on: false };
+  const blooms = [], trails = [], live = new Map(), holds = new Map(), pts = new Map();
+  // Fingers' light follows the theme, gliding with the page's colours.
+  function colours(rgb, tone, ms, a1, a2) {
+    blend = tone === 'light' ? 'source-over' : 'lighter'; light = tone === 'light';
+    const to = [rgb, a1 || auraA, a2 || auraB];
+    if (!ms) { col = rgb.slice(); auraA = to[1].slice(); auraB = to[2].slice(); glide = null; return; }
+    glide = { from: [col.slice(), auraA.slice(), auraB.slice()], to, t0: performance.now(), ms };
+  }
+  function resize() {
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    const nw = innerWidth, nh = innerHeight;
+    cv.width = Math.round(nw * dpr); cv.height = Math.round(nh * dpr);
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (!motes.length || Math.abs(nw * nh - W * H) > W * H * 0.3) {
+      const n = Math.round(Math.min(120, Math.max(48, (nw * nh) / 4200)));
+      baseN = n;
+      motes = Array.from({ length: n }, () => ({ x: Math.random() * nw, y: Math.random() * nh, r: 0.45 + Math.random() * 1.1, a: 0.1 + Math.random() * 0.42,
+        ph: Math.random() * 6.283, tw: 0.4 + Math.random() * 1.2, sp: 0.003 + Math.random() * 0.009, vx: 0, vy: 0, gl: 0, rot: Math.random() < 0.5 ? 0 : 0.785 }));
+    }
+    W = nw; H = nh;
+    if (!aura.on) { aura.x = W / 2; aura.y = H / 2; }
+  }
+  // A star in the deep field: where it sits now on screen (keep), or new, far away and anywhere ahead.
+  function seedDeep(m, keep, vpx, vpy, SC, t) {
+    if (keep) { m.z = 0.18 + Math.random() * 0.8; m.born = -1e9; }
+    else {
+      m.z = 0.72 + Math.random() * 0.28; m.born = t;
+      m.x = -20 + Math.random() * (W + 40); m.y = -20 + Math.random() * (H + 40);
+      m.r = 0.45 + Math.random() * 1.1; m.a = 0.1 + Math.random() * 0.42; m.ph = Math.random() * 6.283; m.tw = 0.4 + Math.random() * 1.2;
+      m.vx = m.vy = 0; m.gl = 0; m.rot = Math.random() < 0.5 ? 0 : 0.785;
+    }
+    m.wx = (m.x - vpx) * m.z / SC; m.wy = (m.y - vpy) * m.z / SC; m.sx = null;
+  }
+  const mixc = (a, b, k) => a.map((v, i) => Math.round(v + (b[i] - v) * k));
+  const rgbS = (c) => `rgb(${c[0]},${c[1]},${c[2]})`;
+  const rgbaS = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+  function frame(t) {
+    raf = requestAnimationFrame(frame);
+    const dt = Math.min(50, t - (last || t)); last = t;
+    const n = dt / 16.7;                       // frames' worth of time, so it feels the same at 60 or 120 Hz
+    if (glide) {
+      const k = Math.min(1, (performance.now() - glide.t0) / glide.ms), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      [col, auraA, auraB] = glide.from.map((f, i) => mixc(f, glide.to[i], e));
+      if (k >= 1) glide = null;
+    }
+    const still = reducedMQ.matches;
+    g.globalCompositeOperation = 'source-over';
+    g.clearRect(0, 0, W, H);
+    g.globalCompositeOperation = blend;
+    const k = light ? 0.75 : 1;
+
+    // How lively the touch is: speed and firmness of every finger, quick to rise and slow to settle.
+    let target = 0, lead = null;
+    for (const p of pts.values()) {
+      p.e = Math.min(1.4, (Math.min(1, Math.hypot(p.vx, p.vy) / 1.6) * 0.85 + 0.15) * p.f);
+      if (!lead || p.e > lead.e) lead = p;
+      target = Math.max(target, p.e);
+    }
+    E += (target - E) * Math.min(1, (target > E ? 0.22 : 0.022) * n);
+    if (E < 0.002) E = 0;
+    if (lead) { aura.on = true; aura.x += (lead.x - aura.x) * Math.min(1, 0.25 * n); aura.y += (lead.y - aura.y) * Math.min(1, 0.25 * n); aura.mix += (lead.x / W - aura.mix) * Math.min(1, 0.08 * n); }
+    // The background answers too: the haze lifts, and a soft wash of the theme's colours follows the finger.
+    const hz = Math.round((0.82 + 0.18 * Math.min(1, E)) * 100) / 100;
+    if (hz !== hazeShown && hazeEl) { hazeEl.style.opacity = hz; hazeShown = hz; }
+    if (E > 0.01 && aura.on) {
+      const c = mixc(auraA, auraB, Math.max(0, Math.min(1, aura.mix))), rad = 240 + 230 * Math.min(1.2, E);
+      const gr = g.createRadialGradient(aura.x, aura.y, 0, aura.x, aura.y, rad);
+      gr.addColorStop(0, rgbaS(c, (light ? 0.42 : 0.34) * Math.min(1, E)));
+      gr.addColorStop(0.55, rgbaS(c, (light ? 0.16 : 0.12) * Math.min(1, E)));
+      gr.addColorStop(1, rgbaS(c, 0));
+      g.globalAlpha = 1; g.fillStyle = gr; g.fillRect(aura.x - rad, aura.y - rad, rad * 2, rad * 2);
+    }
+
+    // The phone turned: the colour clouds shift a little and ease back; the stars pan below, nearer ones faster.
+    const px = panX, py = panY; panX = panY = 0;
+    hzX *= Math.pow(0.983, n); hzY *= Math.pow(0.983, n);
+    const hzT = Math.abs(hzX) < 0.2 && Math.abs(hzY) < 0.2 ? '' : `translate3d(${hzX.toFixed(1)}px,${hzY.toFixed(1)}px,0)`;
+    if (hzT !== hzShown && hazeEl) {             // the clouds move, never the frame they sit in, so no edge can show
+      hazeEl.style.setProperty('--hx', hzT ? hzX.toFixed(1) + 'px' : '0px'); hazeEl.style.setProperty('--hy', hzT ? hzY.toFixed(1) + 'px' : '0px'); hzShown = hzT;
+    }
+
+    // Flight: the speed follows the finger. A swipe speeds it up quickly, the faster the more; then it eases back to a cruise.
+    const wantFly = flyOn && !still;
+    if (wantFly || flyV > 0) {
+      const target = wantFly ? Math.min(FLY_TOP, FLY_CRUISE + 1.7 * Math.pow(Math.min(1.4, E), 1.6)) : 0;
+      flyV += (target - flyV) * Math.min(1, (target > flyV ? 0.05 : wantFly ? 0.012 : 0.022) * n);   // landing is a little quicker than easing to a cruise
+      if (!wantFly && flyV < 0.004) flyV = 0;
+    }
+    flyK = Math.max(0, Math.min(1, flyK + (wantFly ? 0.02 : -0.02) * n));
+    vpOX *= Math.pow(0.985, n); vpOY *= Math.pow(0.985, n);
+    const SC = Math.max(W, H) * 0.5, vpx = W / 2 + vpOX, vpy = H / 2 + vpOY, dz = flyV * dt / 1000;
+    if ((wantFly || flyV > 0) && !deep) { deep = true; for (const m of motes) seedDeep(m, true, vpx, vpy, SC, t); }
+    else if (deep && !wantFly && flyV === 0) deep = false;   // landed: the stars drift on from where they are
+    if (deep && wantFly && motes.length < Math.min(170, Math.round(baseN * 1.5))) {   // a deeper field while flying
+      for (let i = 0; i < 2; i++) { const m = { sp: 0.003 + Math.random() * 0.009 }; seedDeep(m, false, vpx, vpy, SC, t); motes.push(m); }
+    }
+
+    // Stars: drift upward, get pushed, swirled and carried by fingers, and glint harder the livelier the touch.
+    const damp = Math.pow(0.955, n), fade = Math.pow(0.952, n);
+    motion = 0; glinting = 0;
+    g.fillStyle = rgbS(col); g.strokeStyle = rgbS(col); g.lineCap = 'round';
+    for (const m of motes) {
+      if (deep) {                                // flying: each star comes closer, out from the point ahead
+        if (m.z == null) seedDeep(m, true, vpx, vpy, SC, t);
+        m.z -= dz;
+        const ox = m.x, oy = m.y;
+        m.x = vpx + m.wx / m.z * SC; m.y = vpy + m.wy / m.z * SC;
+        if (m.z < 0.04 || m.x < -40 || m.x > W + 40 || m.y < -40 || m.y > H + 40) { seedDeep(m, false, vpx, vpy, SC, t); m.x = vpx + m.wx / m.z * SC; m.y = vpy + m.wy / m.z * SC; }
+        else { m.sx = ox; m.sy = oy; }
+      } else {
+        if (!still) { m.y -= m.sp * dt; m.x += Math.sin(t * 0.00021 + m.ph) * 0.005 * dt; }
+        if (px || py) { const depth = 0.3 + 0.7 * Math.min(1, (m.r - 0.45) / 1.1); m.x += px * depth; m.y += py * depth; }
+      }
+      for (const p of pts.values()) {
+        const R = 150 + 120 * Math.min(1, p.e), dx = m.x - p.x, dy = m.y - p.y, d2 = dx * dx + dy * dy;
+        if (d2 < R * R && d2 > 1) {
+          const d = Math.sqrt(d2), f = 1 - d / R, ff = f * f;
+          m.gl = Math.max(m.gl, f * (0.2 + 0.8 * Math.min(1, p.e)));
+          if (!still) {
+            const e2 = Math.min(1.2, p.e) * Math.min(1.2, p.e);   // gentle for slow fingers, much stronger for quick ones
+            const push = ff * (0.02 + 0.3 * e2) * n;
+            m.vx += (dx / d) * push - (dy / d) * push * 0.4;
+            m.vy += (dy / d) * push + (dx / d) * push * 0.4;
+            const carry = ff * 2.4 * e2 * n;                      // swept along in the finger's wake
+            m.vx += p.vx * carry; m.vy += p.vy * carry;
+          }
+        }
+      }
+      // ripples from a tap pass through the stars and nudge them outward
+      for (const b of blooms) {
+        const age = t - b.t; if (age < 0 || age > 1500) continue;
+        const ring = 8 + 200 * (1 - Math.pow(1 - age / 2500, 3)), dx = m.x - b.x, dy = m.y - b.y, d = Math.hypot(dx, dy) || 1;
+        if (Math.abs(d - ring) < 16) {
+          const s = (1 - Math.abs(d - ring) / 16) * (1 - age / 1500) * b.p;
+          m.gl = Math.max(m.gl, s * 0.9);
+          if (!still) { m.vx += (dx / d) * s * 0.5 * n; m.vy += (dy / d) * s * 0.5 * n; }
+        }
+      }
+      const sp = Math.hypot(m.vx, m.vy);
+      if (sp > 18) { m.vx *= 18 / sp; m.vy *= 18 / sp; }
+      if (deep) { const s3 = m.z / SC; m.wx += m.vx * dt * 0.06 * s3; m.wy += m.vy * dt * 0.06 * s3; }   // a push moves it in the deep field too
+      m.x += m.vx * dt * 0.06; m.y += m.vy * dt * 0.06; m.vx *= damp; m.vy *= damp; m.gl *= fade;
+      motion += sp;
+      if (!deep) {
+        if (m.y < -4) { m.y = H + 4; m.x = Math.random() * W; } else if (m.y > H + 6) m.y = -4;
+        if (m.x < -6) m.x = W + 4; else if (m.x > W + 6) m.x = -4;
+      }
+      const twinkle = still ? 0.85 : 0.62 + 0.38 * Math.sin(t * 0.0011 * m.tw + m.ph);
+      let rad = m.r, glow = m.a * twinkle;
+      if (deep) {                                // nearer stars are larger and brighter; new ones fade in far away
+        rad = m.r * (1 + (Math.min(3, Math.max(0.7, 0.35 / m.z)) - 1) * flyK);
+        glow *= (1 + flyK * (0.6 * Math.min(1, 0.25 / m.z) - 0.1)) * Math.min(1, (t - m.born) / 700);
+        if (flyV > 0.3 && m.sx != null) {        // at speed, each star draws a streak of light behind it
+          const L = Math.min(1, (flyV - 0.3) / 1.4), ex = m.x - (m.x - m.sx) * (1 + 6 * L), ey = m.y - (m.y - m.sy) * (1 + 6 * L);
+          g.globalAlpha = Math.min(1, glow) * 0.75 * L * k; g.lineWidth = Math.max(0.6, rad * 1.3);
+          g.beginPath(); g.moveTo(ex, ey); g.lineTo(m.x, m.y); g.stroke();
+        }
+      }
+      g.globalAlpha = Math.min(1, glow + m.gl * 0.85) * k;
+      g.beginPath(); g.arc(m.x, m.y, rad * (1 + m.gl * 1.3), 0, 6.283); g.fill();
+      if (m.gl > 0.28) {                       // a four-point glint
+        glinting++;
+        const L = 2 + 9 * m.gl, c = Math.cos(m.rot) * L, s2 = Math.sin(m.rot) * L;
+        g.globalAlpha = Math.min(1, (m.gl - 0.2) * 0.9) * k; g.lineWidth = 0.8;
+        g.beginPath(); g.moveTo(m.x - c, m.y - s2); g.lineTo(m.x + c, m.y + s2); g.moveTo(m.x + s2, m.y - c); g.lineTo(m.x - s2, m.y + c); g.stroke();
+      }
+    }
+
+    // blooms and rings where a finger lands
+    for (let i = blooms.length - 1; i >= 0; i--) {
+      const b = blooms[i], age = t - b.t, a1 = age / 1900;
+      if (age < 0) continue;
+      if (a1 >= 1.3) { blooms.splice(i, 1); continue; }
+      if (a1 < 1) {
+        const e = 1 - Math.pow(1 - a1, 3), rad = still ? 70 : 16 + 110 * e;
+        const gr = g.createRadialGradient(b.x, b.y, 0, b.x, b.y, rad);
+        gr.addColorStop(0, rgbaS(col, 0.3 * k * b.v * Math.pow(1 - a1, 1.7))); gr.addColorStop(1, rgbaS(col, 0));
+        g.globalAlpha = 1; g.fillStyle = gr; g.beginPath(); g.arc(b.x, b.y, rad, 0, 6.283); g.fill();
+      }
+      const a2 = age / 2500;
+      if (!still && a2 < 1) {
+        const e2 = 1 - Math.pow(1 - a2, 3);
+        g.globalAlpha = 0.5 * k * b.v * Math.pow(1 - a2, 2.2); g.strokeStyle = rgbS(col); g.lineWidth = 1;
+        g.beginPath(); g.arc(b.x, b.y, 8 + 200 * e2, 0, 6.283); g.stroke();
+      }
+    }
+    // trails of light behind a moving finger
+    g.lineCap = 'round'; g.lineJoin = 'round'; g.strokeStyle = rgbS(col);
+    for (let ti = trails.length - 1; ti >= 0; ti--) {
+      const tr = trails[ti], P = tr.pts;
+      while (P.length && t - P[0].t > 1600) P.shift();
+      if (!P.length && tr.done) { trails.splice(ti, 1); continue; }
+      for (const pass of [[10, 0.07], [3.2, 0.16], [1.3, 0.8]]) {
+        for (let i = 1; i < P.length; i++) {
+          const p0 = P[i - 1], p1 = P[i], age = (t - p1.t) / 1600;
+          if (age >= 1) continue;
+          const f = Math.pow(1 - age, 1.6), pm = P[i - 2] || p0;
+          g.globalAlpha = pass[1] * f * k * (1 + 0.6 * Math.min(1, E)); g.lineWidth = pass[0] * (0.35 + 0.65 * f);
+          g.beginPath(); g.moveTo((pm.x + p0.x) / 2, (pm.y + p0.y) / 2); g.quadraticCurveTo(p0.x, p0.y, (p0.x + p1.x) / 2, (p0.y + p1.y) / 2); g.stroke();
+        }
+      }
+    }
+    // a gathering glow under a finger that rests
+    for (const h of holds.values()) {
+      const age = t - h.t, gr0 = Math.min(1, age / 1100), rad = 26 + 52 * gr0 + (still ? 0 : 4 * Math.sin(t * 0.004));
+      const gr = g.createRadialGradient(h.x, h.y, 0, h.x, h.y, rad);
+      gr.addColorStop(0, rgbaS(col, 0.22 * gr0 * k)); gr.addColorStop(1, rgbaS(col, 0));
+      g.globalAlpha = 1; g.fillStyle = gr; g.beginPath(); g.arc(h.x, h.y, rad, 0, 6.283); g.fill();
+    }
+    g.globalAlpha = 1;
+  }
+  function start() { if (!raf) { last = 0; panX = panY = 0; raf = requestAnimationFrame(frame); } }
+  function stop() { cancelAnimationFrame(raf); raf = 0; }
+  return {
+    colours, resize, start, stop,
+    // power: how firmly the finger landed (about 0.5 light to 1.8 firm)
+    bloom(x, y, v = 1, power = 1) { blooms.push({ x, y, t: performance.now(), v, p: power }); if (blooms.length > 24) blooms.shift(); E = Math.max(E, 0.3 * power * v); },
+    point(id, x, y, vx = 0, vy = 0, f = 1) { if (x == null) pts.delete(id); else { const p = pts.get(id) || { e: 0 }; Object.assign(p, { x, y, vx, vy, f }); pts.set(id, p); } },
+    trail(id, x, y) { let tr = live.get(id); if (!tr) { tr = { pts: [], done: false }; live.set(id, tr); trails.push(tr); } tr.pts.push({ x, y, t: performance.now() }); if (tr.pts.length > 140) tr.pts.shift(); },
+    trailEnd(id) { const tr = live.get(id); if (tr) { tr.done = true; live.delete(id); } },
+    hold(id, x, y) { if (x == null) holds.delete(id); else { const h = holds.get(id); if (h) { h.x = x; h.y = y; } else holds.set(id, { x, y, t: performance.now() }); } },
+    get active() { return trails.length + holds.size + blooms.length; },
+    // dx, dy: how far the nearest stars should pan, in pixels
+    pan(dx, dy) {
+      if (deep) { vpOX = Math.max(-W * 0.28, Math.min(W * 0.28, vpOX + dx * 0.8)); vpOY = Math.max(-H * 0.2, Math.min(H * 0.2, vpOY + dy * 0.8)); }   // flying: turning steers
+      else { panX += dx; panY += dy; }
+      panTotal += Math.abs(dx) + Math.abs(dy);
+      hzX = Math.max(-40, Math.min(40, hzX + dx * 0.14)); hzY = Math.max(-40, Math.min(40, hzY + dy * 0.14)); },
+    fly(on) { flyOn = !!on; },
+    stats() { return { fly: flyOn, speed: +flyV.toFixed(3), deep, stars: motes.length, vp: [Math.round(vpOX), Math.round(vpOY)], pan: +panTotal.toFixed(1), hazeShift: hzShown, E: +E.toFixed(3), glinting, motion: +motion.toFixed(1), haze: hazeShown, aura: rgbS(mixc(auraA, auraB, Math.max(0, Math.min(1, aura.mix)))), mix: +aura.mix.toFixed(2) }; },
+  };
+})();
+
+function makeGrain() {
+  try {
+    const c = document.createElement('canvas'); c.width = c.height = 160;
+    const x = c.getContext('2d'), im = x.createImageData(160, 160);
+    for (let i = 0; i < im.data.length; i += 4) { const v = Math.random() * 255; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = 255; }
+    x.putImageData(im, 0, 0);
+    document.documentElement.style.setProperty('--grain', `url(${c.toDataURL()})`);
+  } catch {}
+}
+
+// The comet for every spinner: a bright head and a tail that thins and fades, drawn once with a conic gradient
+// so it is perfectly smooth. Phones without conic gradients keep the CSS fallback.
+function makeComet() {
+  try {
+    const Z = 96, c = document.createElement('canvas'); c.width = c.height = Z;
+    const g = c.getContext('2d'); if (!g.createConicGradient) return;
+    g.scale(Z / 24, Z / 24);
+    const R = 8.4, HW = 3.6, SPAN = 285 * Math.PI / 180, head = -Math.PI / 2, N = 120;
+    const w = (t) => 0.2 + (HW - 0.2) * Math.pow(1 - t, 1.15);   // t is 0 at the head, 1 at the tail's end
+    const at = (t, r) => [12 + r * Math.cos(head - SPAN * t), 12 + r * Math.sin(head - SPAN * t)];
+    g.beginPath();
+    for (let i = 0; i <= N; i++) g.lineTo(...at(i / N, R + w(i / N) / 2));
+    for (let i = N; i >= 0; i--) g.lineTo(...at(i / N, R - w(i / N) / 2));
+    g.closePath();
+    const cg = g.createConicGradient(head - SPAN, 12, 12), f = SPAN / (2 * Math.PI);
+    for (let k = 0; k <= 16; k++) cg.addColorStop(f * k / 16, `rgba(0,0,0,${Math.pow(k / 16, 1.7).toFixed(3)})`);
+    cg.addColorStop(1, '#000');
+    g.fillStyle = cg; g.fill();
+    g.fillStyle = '#000'; g.beginPath(); g.arc(12, 12 - R, HW / 2, 0, 6.283); g.fill();
+    const halo = g.createRadialGradient(12, 12 - R, HW / 2, 12, 12 - R, HW / 2 + 1.6);
+    halo.addColorStop(0, 'rgba(0,0,0,.28)'); halo.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = halo; g.beginPath(); g.arc(12, 12 - R, HW / 2 + 1.6, 0, 6.283); g.fill();
+    document.documentElement.style.setProperty('--comet', `url(${c.toDataURL()})`);
+  } catch {}
+}
+
+/* ---------------- the toolbar: out of sight until settings is tapped ---------------- */
+// Only a whisper of the settings icon shows (the arrows stay as they are). One tap brings back the other icons; they fade again
+// 5 seconds after the last tap on any of them. Settings tapped while they show opens Settings.
+let chromeTimer = 0, byKeys = false;
+const chromeOn = () => document.documentElement.classList.contains('chrome');
+function showChrome() { document.documentElement.classList.add('chrome'); bumpChrome(); }
+function bumpChrome() { clearTimeout(chromeTimer); chromeTimer = setTimeout(hideChrome, 5000); }
+function hideChrome() {
+  if (document.querySelector('dialog[open]') || $('#shareBtn').classList.contains('busy')) { bumpChrome(); return; }
+  document.documentElement.classList.remove('chrome');
+  const f = document.activeElement; if (f && f.closest && f.closest('header')) f.blur();
+}
+// A keyboard reaching a hidden button brings the toolbar back too.
+document.addEventListener('keydown', () => { byKeys = true; }, true);
+document.addEventListener('pointerdown', () => { byKeys = false; }, true);
+document.addEventListener('focusin', (e) => { if (byKeys && e.target.closest && e.target.closest('header .ib')) showChrome(); });
+
+/* ---------------- motion: the space moves with the phone ---------------- */
+// Turning or tilting the phone glides the stars past, like a window into space. It reads the gyroscope's turn rate,
+// so it never drifts, and holding still keeps the space still. iPhone asks once, on the first tap.
+const motionOK = 'DeviceMotionEvent' in window;
+const askMotion = isIOS && motionOK && typeof DeviceMotionEvent.requestPermission === 'function';   // only iPhone gates motion behind a question
+const MOTION_PX = 5.5;                           // pixels the nearest stars move per degree the phone turns
+let motionOn = false, motT = 0, motionAsked = false;
+function onMotion(e) {
+  const r = e.rotationRate;
+  if (!r || !S.motion || reducedMQ.matches || document.hidden) return;
+  const t = performance.now(), dt = motT && t - motT < 250 ? (t - motT) / 1000 : 0.016; motT = t;
+  const dz = (v) => { v = Math.max(-400, Math.min(400, +v || 0)); return Math.abs(v) < 1.2 ? 0 : v - Math.sign(v) * 1.2; };   // a resting hand's tremor is ignored
+  const vx = -dz(r.gamma) * MOTION_PX, vy = -dz(r.beta) * MOTION_PX;   // turn right and the space slides left; tilt down and it rises
+  if (vx || vy) Field.pan(vx * dt, vy * dt);
+}
+function startMotion() { if (motionOn || !motionOK) return; addEventListener('devicemotion', onMotion); motionOn = true; }
+async function askForMotion() {
+  if (!askMotion) { startMotion(); return true; }
+  try {
+    const res = await DeviceMotionEvent.requestPermission();
+    put('motionPerm', res);
+    if (res === 'granted') { startMotion(); return true; }
+  } catch {}                                     // not from a tap, and not allowed yet
+  return false;
+}
+// iPhone: the first tap of each visit asks, unless it is already allowed or was declined.
+function motionTap(e) {
+  if (!e.isTrusted || (e.target.closest && e.target.closest('#hap'))) return;   // a real tap only, not the haptic switch's click
+  if (!askMotion || motionOn || motionAsked || !S.motion || get('motionPerm', '') === 'denied') return;
+  motionAsked = true;
+  askForMotion().then((ok) => { if (!ok && get('motionPerm', '') === 'denied') { S.motion = false; put('motion', false); renderMotion(); } });
+}
+document.addEventListener('touchend', motionTap, true);
+document.addEventListener('click', motionTap, true);
+// Flight: the icon shows when it is on; the star field does the rest.
+function renderFly() { const b = $('#flyBtn'); b.setAttribute('aria-pressed', String(S.fly)); b.setAttribute('aria-label', S.fly ? 'Stop flying' : 'Fly through the stars'); b.title = S.fly ? 'Stop flying' : 'Fly'; }
+function renderMotion() { $('#motionRow').hidden = !motionOK; $('#motionSw').setAttribute('aria-checked', String(S.motion)); }
+
+/* ---------------- sound ---------------- */
+let A = null, ticker = 0, pendingPluck = null;
+function setAudioState(s) { document.documentElement.dataset.audio = s; $('#sndBtn').setAttribute('aria-label', s === 'muted' ? 'Turn the sound on' : 'Turn the sound off'); renderNav(); }
+function audioReady() { return A && A.ctx.state === 'running'; }
+
+function ensureAudio() {
+  if (S.muted) return;
+  try {
+    if (!A) {
+      try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch {}
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      const ctx = new AC({ latencyHint: 'playback' });   // a roomier buffer, so busy phones never leave gaps (crackle)
+      A = Sound.createEngine(ctx, { music: S.music / 100, touch: S.touchVol / 100 });
+      ctx.onstatechange = onAudioState;
+    }
+    if (A.ctx.state !== 'running') A.ctx.resume().then(onAudioState, () => {});
+    else onAudioState();
+  } catch (e) { console.warn('Sound could not start', e); }
+}
+function onAudioState() {
+  if (!A) return;
+  if (A.ctx.state === 'running' && !S.muted && !document.hidden) {
+    if (!A.running) A.start(pieceNow());
+    A.setMuted(false);
+    if (!ticker) ticker = setInterval(() => { if (A && A.ctx.state === 'running') A.scheduleUntil(A.ctx.currentTime + 1.2); }, 250);
+    A.scheduleUntil(A.ctx.currentTime + 1.2);
+    if (pendingPluck && performance.now() - pendingPluck.at < 600) A.pluck(pendingPluck.m, pendingPluck.pan, 0.9);
+    pendingPluck = null;
+    setAudioState('on');
+  } else if (S.muted) setAudioState('muted');
+  else if (A.ctx.state !== 'running' && !document.hidden) setAudioState('off');
+}
+function pauseAudio() {
+  if (!A) return;
+  A.setMuted(true); A.stopAll();
+  const ctx = A.ctx;
+  setTimeout(() => { if ((S.muted || document.hidden) && ctx.state === 'running') ctx.suspend().catch(() => {}); }, 450);
+}
+function toggleSound() {
+  S.muted = !S.muted; put('muted', S.muted);
+  if (S.muted) { pauseAudio(); setAudioState('muted'); }
+  else { setAudioState(audioReady() ? 'on' : 'off'); ensureAudio(); }
+}
+function pluckAt(x, y, vel) {
+  const m = Core.touchMidi(pieceNow(), 1 - y / innerHeight), pan = (x / innerWidth) * 1.4 - 0.7;
+  if (audioReady() && A.running) A.pluck(m, pan, vel); else pendingPluck = { m, pan, at: performance.now() };
+}
+
+/* ---------------- the spoken word ---------------- */
+// The phone's own speech voice: free, offline, no server. A calm English female voice where the phone has one.
+const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+const FEMALE = ['serena', 'kate', 'stephanie', 'martha', 'fiona', 'moira', 'tessa', 'karen', 'samantha', 'ava', 'allison', 'susan', 'zoe', 'libby', 'sonia', 'hazel', 'maisie', 'female'];
+const MALE = ['daniel', 'arthur', 'oliver', 'rishi', 'aaron', 'fred', 'alex', 'tom', 'george', 'ryan', 'thomas', 'gordon', 'lee', 'male'];
+let voice = null;
+function pickVoice() {
+  if (!canSpeak) return null;
+  const all = speechSynthesis.getVoices().filter((v) => /^en([-_]|$)/i.test(v.lang));
+  const score = (v) => {
+    const n = v.name.toLowerCase(), lang = v.lang.replace('_', '-').toLowerCase();
+    let sc = 0;
+    if (FEMALE.some((f) => n.includes(f))) sc += 6;
+    if (MALE.some((m) => new RegExp('\\b' + m + '\\b').test(n)) && !n.includes('female')) sc -= 8;
+    if (/premium|enhanced|natural|neural/.test(n)) sc += 3;
+    if (lang === 'en-gb') sc += 2; else if (lang === 'en-ie' || lang === 'en-au') sc += 1;
+    if (v.localService) sc += 1;
+    return sc;
+  };
+  return all.sort((a, b) => score(b) - score(a))[0] || null;
+}
+if (canSpeak) { voice = pickVoice(); speechSynthesis.addEventListener && speechSynthesis.addEventListener('voiceschanged', () => { voice = pickVoice(); }); }
+let sayTimer = 0;
+function sayWord() {
+  const set = cur(); if (!set || !canSpeak) return;
+  ensureAudio();
+  try {
+    speechSynthesis.cancel();
+    if (!voice) voice = pickVoice();
+    const u = new SpeechSynthesisUtterance(set.w.w);
+    if (voice) u.voice = voice;
+    u.lang = voice ? voice.lang : 'en-GB';
+    u.rate = 0.82; u.pitch = 1.04; u.volume = 0.9;
+    const w = $('#w');
+    const done = () => { clearTimeout(sayTimer); w.classList.remove('speaking'); if (A && A.duck) A.duck(false); };
+    u.onstart = () => { w.classList.add('speaking'); if (A && A.duck) A.duck(true); };
+    u.onend = done; u.onerror = done;
+    w.classList.add('speaking'); if (A && A.duck) A.duck(true);
+    sayTimer = setTimeout(done, 5000);   // never leave the music dipped
+    speechSynthesis.speak(u);
+    if (!S.heard) { S.heard = true; put('heard', true); renderNav(); }
+  } catch { /* no voice on this phone: the word stays silent */ }
+}
+
+/* ---------------- haptics ---------------- */
+const hapEl = (() => {
+  if (!isIOS) return null;
+  const l = document.createElement('label'); l.id = 'hap'; l.setAttribute('aria-hidden', 'true');
+  l.style.cssText = 'position:fixed;left:-200px;top:0;width:1px;height:1px;opacity:0;pointer-events:none';
+  const i = document.createElement('input'); i.type = 'checkbox'; i.setAttribute('switch', ''); i.tabIndex = -1;
+  l.append(i); document.body.append(l); return l;
+})();
+let lastBuzz = 0;
+function buzz(kind) {
+  if (!S.haptics) return;
+  const t = performance.now();
+  try {
+    if (navigator.vibrate && !isIOS) {
+      if (kind === 'step' && t - lastBuzz < 45) return;
+      lastBuzz = t; navigator.vibrate(kind === 'step' ? 4 : kind === 'page' ? 12 : 8);
+    } else if (hapEl) {
+      if (t - lastBuzz < (kind === 'step' ? 110 : 50)) return;
+      lastBuzz = t; hapEl.click();
+    }
+  } catch {}
+}
+
+/* ---------------- moving between sets ---------------- */
+// dir: -1 older (slides right), 1 newer (slides left), 0 a new set arriving from the top.
+async function goTo(i, dir) {
+  if (S.view === 'faith') return goVerse(i, dir);
+  i = Math.max(0, Math.min(S.sets.length - 1, i));
+  if ((i === S.i && dir !== 0) || S.busy) { springBack(); return; }
+  S.busy = true;
+  buzz('page');
+  const next = S.sets[i];
+  if (A && A.running && audioReady() && next && (!cur() || cur().seed !== next.seed)) A.setPiece(Core.piece(next.seed));
+  await swap(() => { S.i = i; }, dir);
+  S.busy = false;
+}
+// The page leaves, changes, and arrives: sideways between sets; for anything new, line by line from the top.
+async function swap(change, dir) {
+  await leave(dir);
+  await arrive(dir, () => { change(); render(); });
+}
+async function leave(dir) {
+  const el = $('#inner');
+  if (reducedMQ.matches) { el.style.transition = 'opacity .16s'; el.style.transform = ''; el.style.opacity = '0'; await wait(170); return; }
+  if (dir === 0) return dissolve();
+  el.style.transition = 'transform .22s cubic-bezier(.4,0,1,1), opacity .2s linear';
+  el.style.transform = `translateX(${-dir * innerWidth * 0.42}px)`; el.style.opacity = '0';
+  await wait(200);
+}
+// update: changes what's on screen, run at the one moment nothing is showing, so no line ever flashes.
+async function arrive(dir, update) {
+  const el = $('#inner');
+  outAnims.forEach((a) => a.cancel()); outAnims = [];
+  if (update) update();
+  if (reducedMQ.matches) { el.style.transition = 'opacity .2s'; el.style.transform = ''; el.style.opacity = '1'; await wait(170); return; }
+  if (dir === 0) return develop();
+  el.style.transition = 'none'; el.style.transform = `translateX(${dir * 46}px)`; void el.offsetWidth;
+  el.style.transition = 'transform .62s cubic-bezier(.16,.84,.24,1), opacity .5s cubic-bezier(.2,.7,.2,1)';
+  el.style.transform = ''; el.style.opacity = '1';
+  await wait(380);
+}
+// Every line on the page, top to bottom: the word, its sound, definition and example, the quote, the joke, or a verse.
+const LINES = '.w, .say, .def, .ex, .mote, .q, .by, .setup, #pl > *, .vbook, .vq, .vmsg, .back, .empty, .vblk .drift';
+const lines = () => [...$('#inner').querySelectorAll(LINES)].filter((n) => n.getClientRects().length);
+// The lines swell a touch and blur, never anything that changes the layout (letter-spacing rewraps text and jolts
+// the page), so every line stays exactly where it will settle.
+const base = (n) => { const t = getComputedStyle(n).transform; return t && t !== 'none' ? t : ''; };
+const CLEAR = (b) => ({ opacity: 1, filter: 'blur(0px)', transform: b || 'none' });
+const MIST = (b) => ({ opacity: 0, filter: 'blur(8px)', transform: `${b} scale(1.025)`.trim() });
+let outAnims = [];
+// Each line blurs, loosens and fades in turn, top to bottom; a pulled page settles back as it goes.
+function dissolve() {
+  const el = $('#inner');
+  if (el.style.transform && el.style.transform !== 'none') { el.style.transition = 'transform .55s cubic-bezier(.2,.9,.25,1)'; el.style.transform = ''; }
+  el.style.opacity = '1';
+  outAnims.forEach((a) => a.cancel());
+  const ls = lines(); ls.forEach((n) => n.getAnimations().forEach((a) => a.cancel()));   // a set still arriving starts from clear
+  outAnims = ls.map((n, i) => { const b = base(n); return n.animate([CLEAR(b), MIST(b)], { duration: 520, delay: i * 60, easing: 'cubic-bezier(.45,0,.75,.4)', fill: 'forwards' }); });
+  return Promise.all(outAnims.map((a) => a.finished.catch(() => {})));
+}
+// The reverse, the way the word has always arrived: each line comes into focus in turn, top to bottom.
+async function develop() {
+  const el = $('#inner');
+  el.style.transition = 'none'; el.style.transform = ''; el.style.opacity = '1';
+  const ls = lines();
+  ls.forEach((n, i) => { const b = base(n); n.animate([MIST(b), CLEAR(b)], { duration: n.classList.contains('w') || n.classList.contains('vq') ? 1400 : 1050, delay: i * 105, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }); });
+  await wait(Math.min(700, 300 + ls.length * 105));   // the page is usable again long before the last line settles
+}
+function springBack() {
+  const el = $('#inner');
+  el.style.transition = 'transform .5s cubic-bezier(.2,.9,.25,1), opacity .4s';
+  el.style.transform = ''; el.style.opacity = '1';
+}
+
+/* ---------------- live content: fetched on the phone, kept on the phone ---------------- */
+const SRC = {
+  dict: (w) => 'https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(w),
+  wikt: (w) => 'https://en.wiktionary.org/api/rest_v1/page/definition/' + encodeURIComponent(w),
+  quote: 'https://dummyjson.com/quotes/random',
+  dad: 'https://icanhazdadjoke.com/',
+  pun: 'https://v2.jokeapi.dev/joke/Pun,Misc?type=twopart&safe-mode&blacklistFlags=nsfw,religious,political,racist,sexist,explicit',
+  plain: 'https://official-joke-api.appspot.com/random_joke',
+};
+async function getJSON(url, headers) {
+  const c = new AbortController(), t = setTimeout(() => c.abort(), 8000);
+  try {
+    const r = await fetch(url, { headers, signal: c.signal, cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return await r.json();
+  } finally { clearTimeout(t); }
+}
+async function getWord(first, recent) {
+  const tries = [first, Core.anotherWord(recent), Core.anotherWord(recent)];
+  for (const w of tries) {
+    try { const d = Core.parseDictionary(await getJSON(SRC.dict(w)), w); if (d) return d; } catch {}
+    try { const d = Core.parseWiktionary(await getJSON(SRC.wikt(w)), w); if (d) return d; } catch {}
+  }
+  throw new Error('No definition found');
+}
+async function getQuote() {
+  for (let k = 0; k < 4; k++) { const q = Core.parseQuote(await getJSON(SRC.quote)); if (q) return q; }
+  throw new Error('No quote of a calm length');
+}
+async function getJoke(prefer) {
+  const order = [() => getJSON(SRC.dad, { Accept: 'application/json' }), () => getJSON(SRC.pun), () => getJSON(SRC.plain)];
+  const list = prefer ? [order[1], order[0], order[2]] : order;
+  let oneLiner = null;
+  for (const f of list) {
+    try { const j = Core.parseJoke(await f()); if (j && j.p) return j; if (j && !oneLiner) oneLiner = j; } catch {}
+  }
+  if (oneLiner) return oneLiner;
+  throw new Error('No joke');
+}
+// A fresh set. The first of the day uses that day's word, so everyone shares it; pulls choose another.
+async function fetchSet(kind) {
+  const day = Core.dayNumber(new Date());
+  const recent = S.sets.slice(-200).map((x) => x.w && x.w.w);
+  const daily = kind === 'daily';
+  const word = daily && !recent.includes(Core.wordOfDay(day)) ? Core.wordOfDay(day) : Core.anotherWord(recent);
+  const [w, q, j] = await Promise.allSettled([getWord(word, recent), getQuote(), getJoke(daily ? day % 2 === 1 : Math.random() < 0.5)]);
+  const last = latest(), missing = [];
+  const take = (res, key, name) => { if (res.status === 'fulfilled') return res.value; missing.push(name); return last ? last[key] : null; };
+  const set = { id: Date.now().toString(36), day, at: Date.now(), kind, seed: daily ? day : (Math.random() * 2147483647) | 0,
+    w: take(w, 'w', 'word'), q: take(q, 'q', 'quote'), j: take(j, 'j', 'joke'), rev: false };
+  if (missing.length === 3 || !set.w || !set.q || !set.j) throw new Error('offline');
+  return { set, missing };
+}
+const missingNote = (m) => m.length ? `Couldn’t reach the ${m.join(' or ')} source, so that part is from your last set.` : '';
+
+function showEmpty(state) { S.empty = state; if (S.view !== 'faith') applyEmpty(); }
+function applyEmpty() {
+  const state = S.empty;
+  document.querySelectorAll('.blk, .inner > .mote').forEach((el) => { el.hidden = true; });
+  $('#empty').hidden = false;
+  $('#drift').hidden = state !== 'loading';
+  $('#empty').classList.toggle('loading', state === 'loading');
+  $('#retryBtn').hidden = state === 'loading';
+  $('#emptyMsg').classList.toggle('later', state === 'loading');
+  $('#emptyMsg').textContent = state === 'loading' ? 'Gathering today’s word, quote and joke…' : 'You’re offline. Connect to the internet to get your first set.';
+}
+// On open, at midnight and when the phone comes back online: one new set per day.
+let lastTry = 0, failNoted = false;
+async function ensureDaily(force) {
+  S.today = Core.dayNumber(new Date());
+  const last = latest();
+  if (S.loading || (last && last.day >= S.today)) return;
+  if (force !== true && Date.now() - lastTry < 60000 && lastTry) return;   // no hammering while offline
+  lastTry = Date.now();
+  S.loading = true;
+  const launching = !last || !S.shown;   // nothing on screen yet: show the loader, not yesterday's set
+  if (launching && last && navigator.onLine === false) { S.loading = false; render(); if (!failNoted) { failNoted = true; toast('You’re offline, so this is your last set. A new one arrives when you’re back online.'); } return; }
+  if (launching) showEmpty('loading'); else setRing('busy');
+  // A slow connection never holds the loader for long: after six seconds the last set shows while the new one keeps coming.
+  if (launching && last) setTimeout(() => { if (S.loading && !S.shown && S.view === 'set') { render(); setRing('busy'); } }, 6000);
+  try {
+    const { set, missing } = await fetchSet('daily');
+    const onLatest = launching || S.i >= S.sets.length - 1;
+    S.sets.push(set); saveSets();
+    if (S.view === 'faith') { if (onLatest) S.i = S.sets.length - 1; }   // there when they come back from the verse
+    else if (onLatest) await goTo(S.sets.length - 1, 0); else renderNav();
+    if (missing.length && S.view === 'set') toast(missingNote(missing));
+    failNoted = false;
+  } catch {
+    if (!S.sets.length) showEmpty('offline');
+    else if (launching && S.view === 'set') render();
+    if (S.sets.length && !failNoted && S.view === 'set') { failNoted = true; toast('You’re offline, so this is your last set. A new one arrives when you’re back online.'); }
+  } finally { S.loading = false; setRing(''); }
+}
+// The pull ring belongs to whichever view is showing: a set loading in the background never spins it over a verse.
+function setRing(state) { if (S.view === 'set') pullRing(state); }
+// Pull down, or Settings: another set now.
+async function refresh() {
+  if (S.loading || S.busy) { springBack(); pullRing(''); return; }
+  S.loading = true; S.busy = true; pullRing('busy');
+  const out = leave(0);                          // the words fade away, top to bottom, while the next set comes
+  let res = null;
+  try { res = await fetchSet(latest() ? 'more' : 'daily'); } catch {}
+  try {
+    if (res) { S.sets.push(res.set); saveSets(); if (!S.pulled) { S.pulled = true; put('pulled', true); } }
+    await out;
+    pullRing('');
+    if (res) {
+      if (A && A.running && audioReady() && (!cur() || cur().seed !== res.set.seed)) A.setPiece(Core.piece(res.set.seed));
+      buzz('page');
+      await arrive(0, () => { S.i = S.sets.length - 1; render(); });
+      if (res.missing.length) toast(missingNote(res.missing));
+    } else {
+      toast('Couldn’t get a new set. Check your connection and pull down again.');
+      await arrive(0, render);                   // the same set comes back into focus
+    }
+  } finally { S.loading = false; S.busy = false; pullRing(''); }
+}
+function pullRing(state, k) {
+  const r = $('#pull');
+  r.classList.toggle('busy', state === 'busy');
+  r.classList.toggle('ready', state === 'drag' && k >= 1);
+  if (state === 'drag') { r.style.opacity = String(Math.min(1, k)); r.style.transform = `translateY(${-20 + 46 * Math.min(1, k)}px) rotate(${Math.min(1, k) * 300}deg)`; }
+  else if (state === 'busy') { r.style.opacity = '1'; r.style.transform = 'translateY(26px) rotate(300deg)'; }   // carries on from where the pull left the comet
+  else { r.style.opacity = '0'; r.style.transform = ''; }
+}
+function checkToday() {
+  if (Core.dayNumber(new Date()) !== S.today || (latest() && latest().day < Core.dayNumber(new Date()))) ensureDaily();
+}
+
+/* ---------------- faith: a short verse from the faiths ticked in Settings ---------------- */
+// Fetched live from free sources with no keys (see core.js), and kept on the phone like the sets.
+const recentRefs = (f) => S.verses.filter((v) => v.f === f).slice(-30).map((v) => String(v.ref));
+async function getVerse(f) {
+  if (f === 'sikhism') {                         // BaniDB gives a random shabad; its central line is the verse
+    for (let k = 0; k < 2; k++) {
+      const v = Core.parseBani(await getJSON(Core.verseURL(f)));
+      if (v && !S.verses.slice(-40).some((x) => x.t === v.t)) return v;
+    }
+    throw new Error('No line');
+  }
+  const ref = Core.pickRef(f, recentRefs(f));
+  const seen = S.verses.find((x) => x.f === f && String(x.ref) === String(ref));
+  if (seen) return { f, ref: seen.ref, t: seen.t, by: seen.by };   // already on the phone, so no need to fetch it again
+  const j = await getJSON(Core.verseURL(f, ref));
+  const v = f === 'christianity' ? Core.parseBible(j, ref) : f === 'hinduism' ? Core.parseGita(j, ref) : Core.parseDhp(j, ref);
+  if (!v) throw new Error('No verse');
+  return v;
+}
+// A faith chosen at random from those ticked; if its source is down, the others in turn.
+async function fetchVerse() {
+  const list = Core.FAITHS.filter((f) => S.faiths.includes(f));
+  for (let i = list.length - 1; i > 0; i--) { const k = Math.floor(Math.random() * (i + 1)); [list[i], list[k]] = [list[k], list[i]]; }
+  for (const f of list) {
+    try { const v = await getVerse(f); return { ...v, id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), at: Date.now() }; } catch {}
+  }
+  throw new Error('offline');
+}
+function keepVerse(v) { S.verses.push(v); S.verses = S.verses.slice(-80); put('verses', S.verses); S.vi = S.verses.length - 1; }
+// Offline: a verse already on the phone, from the faiths ticked, other than the one showing.
+function savedVerse(shown) {
+  const pool = S.verses.filter((v) => S.faiths.includes(v.f) && v !== shown);
+  return pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
+}
+let vToken = 0, skipPop = false, openWaiting = false;
+async function openFaith() {
+  if (!faithOn()) return;
+  if (S.view === 'faith') return anotherVerse();
+  if (S.busy) {                                  // mid-transition: open as soon as it settles (one tap is enough)
+    if (openWaiting) return;
+    openWaiting = true; while (S.busy) await wait(50); openWaiting = false;
+    if (S.view === 'faith' || !faithOn()) return;
+  }
+  const token = ++vToken;
+  S.busy = true; S.vloading = true; buzz('page'); pullRing('');
+  try { if (!(history.state && history.state.dd === 'faith')) history.pushState({ dd: 'faith' }, ''); } catch {}   // the phone's Back returns to the set
+  let got = null, done = false;
+  const ask = fetchVerse().catch(() => null).then((v) => { got = v; done = true; });
+  await leave(0);
+  S.view = 'faith'; S.vmsg = '';
+  if (!done) {                                   // a breath of the loader while it comes
+    S.vwait = true; await arrive(0, render);
+    S.busy = false; await ask;
+    if (token !== vToken || S.view !== 'faith') { if (token === vToken) S.vloading = false; if (got) keepVerse(got); return; }   // they went back meanwhile
+    S.busy = true; await leave(0); S.vwait = false;
+  }
+  S.vloading = false;
+  if (got) keepVerse(got);
+  else {
+    const old = savedVerse(null);
+    if (old) { S.vi = S.verses.indexOf(old); toast('You’re offline, so this is a verse from earlier.'); }
+    else S.vmsg = 'Couldn’t reach the verses just now. Check your connection, then pull down to try again.';
+  }
+  await arrive(0, render);
+  if (got && audioReady() && A.running) A.chime();
+  S.busy = false;
+}
+// Pull down, or tap the hands again: another verse.
+async function anotherVerse() {
+  if (S.view !== 'faith' || S.vloading || S.busy || S.vwait) { springBack(); pullRing(''); return; }
+  S.vloading = true; S.busy = true; pullRing('busy');
+  const out = leave(0);                          // the verse fades away while the next one comes
+  let got = null;
+  try { got = await fetchVerse(); } catch {}
+  await out;
+  S.vloading = false; pullRing('');
+  if (!S.vpulled) { S.vpulled = true; put('vpulled', true); }
+  let old = null;
+  if (!got && !(old = savedVerse(verseNow()))) {
+    toast('Couldn’t get another verse. Check your connection and pull down again.');
+    await arrive(0, render); S.busy = false; return;
+  }
+  buzz('page');
+  if (got && A && A.running && audioReady()) A.setPiece(pieceNow());   // the same soft bell as pulling the words, in the same key
+  await arrive(0, () => { if (got) keepVerse(got); else S.vi = S.verses.indexOf(old); S.vmsg = ''; render(); });
+  if (!got) toast('You’re offline, so this is a verse from earlier.');
+  S.busy = false;
+}
+// The arrows look back through the verses seen.
+async function goVerse(i, dir) {
+  i = Math.max(0, Math.min(S.verses.length - 1, i));
+  if (i === S.vi || S.busy || S.vwait || !S.verses.length) { springBack(); return; }
+  S.busy = true; buzz('page');
+  await swap(() => { S.vi = i; S.vmsg = ''; }, dir);
+  S.busy = false;
+}
+async function closeFaith(fromPop) {
+  if (S.view !== 'faith') return;
+  if (!fromPop) { try { if (history.state && history.state.dd === 'faith') { skipPop = true; history.back(); } } catch {} }
+  while (S.busy) await wait(50);
+  if (S.view !== 'faith') return;
+  S.busy = true; buzz('tap'); pullRing('');
+  await swap(() => { S.view = 'set'; S.vwait = false; S.vmsg = ''; }, 0);
+  S.busy = false;
+  if (S.loading) pullRing('busy');               // a new set still on its way
+}
+addEventListener('popstate', () => { if (skipPop) { skipPop = false; return; } if (S.view === 'faith') closeFaith(true); });
+// Settings: the Faith switch, the faiths ticked, and the hands at the top left.
+function renderFaith() {
+  const on = faithOn(), btn = $('#faithBtn');
+  if (btn.hidden === on) btn.hidden = !on;
+  $('#faithSw').setAttribute('aria-checked', String(S.faith));
+  $('#faithRow').classList.toggle('open', S.faith);
+  $('#faithRow').hidden = !canFaith;
+  $('#faiths').hidden = !S.faith || !canFaith;
+  document.querySelectorAll('[data-act=faithPick]').forEach((b) => b.setAttribute('aria-pressed', String(S.faiths.includes(b.dataset.v))));
+  const note = $('#faithNote');
+  note.hidden = !S.faith || !canFaith;
+  note.textContent = !S.faiths.length ? 'Tick one or more, and praying hands appear at the top left.'
+    : `Tap the praying hands at the top left for a short verse from ${S.faiths.length > 1 ? 'one of these faiths' : 'this faith'}. Pull down for another.`;
+  if (!on && S.view === 'faith') closeFaith();
+}
+
+/* ---------------- toast ---------------- */
+let toastTimer = 0;
+function toast(msg, busy) {
+  const t = $('#toast'); if (!msg) return;
+  t.innerHTML = ''; if (busy) { const sp = document.createElement('span'); sp.className = 'spinner'; t.append(sp); }
+  t.append(msg);
+  try { if (t.matches(':popover-open')) t.hidePopover(); t.showPopover(); } catch { t.classList.add('show'); }
+  t.classList.add('on');
+  clearTimeout(toastTimer);
+  if (!busy) toastTimer = setTimeout(() => { t.classList.remove('on'); setTimeout(() => { try { t.hidePopover(); } catch {} t.classList.remove('show'); }, 300); }, 3800);
+}
+
+/* ---------------- share as a picture ---------------- */
+let shareCache = { key: '', blob: null }, shareTimer = 0;
+const shareKey = () => S.view === 'faith' ? (verseNow() ? ['v', verseNow().id, S.themeN, S.tone].join(':') : '') : cur() ? [cur().id, S.themeN, S.tone].join(':') : '';
+function queueShareImage() { clearTimeout(shareTimer); shareTimer = setTimeout(() => { if (shareKey()) makeShareImage().catch(() => {}); }, 2200); }
+function wrapLines(g, text, maxW) {
+  const words = text.split(' '), lines = []; let line = '';
+  for (const w of words) { const t = line ? line + ' ' + w : w; if (g.measureText(t).width > maxW && line) { lines.push(line); line = w; } else line = t; }
+  if (line) lines.push(line);
+  return lines;
+}
+// Even line lengths, like text-wrap: balance.
+function balanced(g, text, maxW) {
+  const n = wrapLines(g, text, maxW).length; let w = maxW;
+  while (w > maxW * 0.5 && wrapLines(g, text, w - 12).length === n) w -= 12;
+  return wrapLines(g, text, w);
+}
+async function makeShareImage() {
+  const verse = verseNow(), set = verse ? null : cur(), key = shareKey();
+  if (!key) throw new Error('Nothing to share');
+  if (shareCache.key === key && shareCache.blob) return shareCache.blob;
+  try { await Promise.all(['200 100px Newsreader', '300 40px Newsreader', 'italic 300 30px Newsreader', '300 40px "Hanken Grotesk"', '400 40px "Hanken Grotesk"', '500 40px "Hanken Grotesk"'].map((f) => document.fonts.load(f))); } catch {}
+  const W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H;
+  const g = c.getContext('2d'), cs = getComputedStyle(document.documentElement), v = (k) => cs.getPropertyValue(k).trim();
+  const pal = Core.palette(S.themeN, S.tone), dark = pal.tone === 'dark';
+  const SANS = '"Hanken Grotesk", system-ui, sans-serif', SERIF = 'Newsreader, Georgia, serif';
+  // the space
+  let gr = g.createRadialGradient(W / 2, 0, 0, W / 2, 0, H * 0.95); gr.addColorStop(0, pal.vars['--bg-2']); gr.addColorStop(1, pal.vars['--bg']);
+  g.fillStyle = gr; g.fillRect(0, 0, W, H);
+  [[-80, 120, '--h1'], [1160, 560, '--h2'], [260, 1450, '--h3']].forEach(([x, y, k]) => {
+    const hz = g.createRadialGradient(x, y, 0, x, y, 820); hz.addColorStop(0, pal.vars[k]); hz.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = hz; g.fillRect(0, 0, W, H);
+  });
+  const r = Core.rng(Core.hash(verse ? (verse.at || 1) % 2147483647 : set.seed + 99)), glow = pal.glow;
+  for (let i = 0; i < 90; i++) { g.globalAlpha = (0.1 + r() * 0.4) * (dark ? 1 : 0.6); g.fillStyle = `rgb(${glow})`; g.beginPath(); g.arc(r() * W, r() * H, 1 + r() * 2.4, 0, 6.283); g.fill(); }
+  g.globalAlpha = 1;
+  // the words, laid out and scaled to fit
+  const ink = pal.vars['--ink'], ink2 = pal.vars['--ink-2'], ink3 = pal.vars['--ink-3'];
+  let k = 1, blocks;
+  const layout = () => {
+    const B = [], add = (font, color, lines, lh, gapBefore, extra) => B.push({ font, color, lines, lh, gapBefore, ...extra });
+    if (verse) {                                 // a verse: the book, the line, where it's from
+      add(`500 ${28 * k}px ${SANS}`, ink3, [Core.FAITH[verse.f].book.toUpperCase()], 40 * k, 0, { spaced: 7 * k });
+      g.font = `300 ${66 * k}px ${SERIF}`; add(g.font, ink, balanced(g, verse.t, 860), 86 * k, 46 * k, { glow: dark, soft: true });
+      add(`400 ${30 * k}px ${SANS}`, ink3, [Core.verseCite(verse)], 40 * k, 30 * k);
+      return B;
+    }
+    g.font = `200 ${150 * k}px ${SERIF}`; let wsz = 150 * k; while (g.measureText(set.w.w).width > 900 && wsz > 60) { wsz -= 4; g.font = `200 ${wsz}px ${SERIF}`; }
+    add(g.font, ink, [set.w.w], wsz * 1.05, 0, { glow: dark });
+    const say = [set.w.ipa, set.w.pos].filter(Boolean).join('   ');
+    if (say) add(`400 ${32 * k}px ${SANS}`, ink2, [say], 44 * k, 22 * k);
+    g.font = `300 ${42 * k}px ${SANS}`; add(g.font, ink, balanced(g, set.w.d, 860), 60 * k, 34 * k);
+    if (set.w.e) { g.font = `300 ${38 * k}px ${SERIF}`; add(g.font, ink2, balanced(g, '“' + set.w.e + '”', 860), 52 * k, 16 * k); }
+    add('', '', [], 0, 52 * k, { mote: true });
+    g.font = `300 ${54 * k}px ${SERIF}`; add(g.font, ink, balanced(g, '“' + set.q.q + '”', 880), 68 * k, 52 * k);
+    add(`400 ${30 * k}px ${SANS}`, ink3, [set.q.a], 40 * k, 18 * k);
+    add('', '', [], 0, 52 * k, { mote: true });
+    g.font = `400 ${40 * k}px ${SANS}`; add(g.font, ink, balanced(g, set.j.s, 860), 56 * k, 52 * k);
+    if (set.j.p) { g.font = `500 ${40 * k}px ${SANS}`; add(g.font, ink, balanced(g, set.j.p, 860), 56 * k, 18 * k); }
+    return B;
+  };
+  const height = (B) => B.reduce((h, b) => h + b.gapBefore + (b.mote ? 6 : b.lines.length * b.lh), 0);
+  for (blocks = layout(); height(blocks) > H - 220 && k > 0.6; blocks = layout()) k -= 0.05;
+  let y = (H - height(blocks)) / 2 - 10;
+  g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+  for (const b of blocks) {
+    y += b.gapBefore;
+    if (b.mote) { g.fillStyle = `rgba(${glow},.75)`; g.shadowColor = `rgba(${glow},.5)`; g.shadowBlur = dark ? 18 : 0; g.beginPath(); g.arc(W / 2, y + 3, 5, 0, 6.283); g.fill(); g.shadowBlur = 0; y += 6; continue; }
+    g.font = b.font; g.fillStyle = b.color;
+    if ('letterSpacing' in g) g.letterSpacing = b.spaced ? b.spaced + 'px' : '0px';
+    for (const line of b.lines) {
+      y += b.lh;
+      if (b.glow) { g.shadowColor = `rgba(${glow},${b.soft ? 0.2 : 0.35})`; g.shadowBlur = 40; }
+      g.fillText(line, W / 2, y - b.lh * 0.24);
+      g.shadowBlur = 0;
+    }
+  }
+  if ('letterSpacing' in g) g.letterSpacing = '0px';
+  const blob = await new Promise((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error('No image'))), 'image/png'));
+  if (shareKey() === key) shareCache = { key, blob };
+  return blob;
+}
+async function shareSet() {
+  const verse = verseNow(), set = verse ? null : cur();
+  if (!shareKey()) return;
+  const b = $('#shareBtn');
+  let blob = shareCache.key === shareKey() ? shareCache.blob : null;
+  if (!blob) { b.classList.add('busy'); b.setAttribute('aria-busy', 'true'); try { blob = await makeShareImage(); } finally { b.classList.remove('busy'); b.removeAttribute('aria-busy'); } }
+  const file = new File([blob], verse ? 'daily-drift-verse.png' : `daily-drift-${set.w.w}.png`, { type: 'image/png' });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file] }); }
+    catch (e) {
+      if (e && e.name === 'NotAllowedError') toast('The picture is ready. Tap share again to send it.');
+      else if (!e || e.name !== 'AbortError') toast('This phone couldn’t open sharing. Try again in a moment.');
+    }
+  } else {
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = file.name; document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast('Sharing isn’t available here, so the picture was saved instead.');
+  }
+}
+
+/* ---------------- touch: play the space, pull the words for a new set ---------------- */
+const G = new Map();
+const HOLD_MS = 220, SLOP = 10, PULL_AT = 76;
+const isControl = (el) => el.closest('button, a, input, label, select, dialog, #hap');
+
+function startPlay(g, now) {
+  g.mode = 'play';
+  Field.trail(g.id, g.x, g.y);
+  if (audioReady() && A.running) { A.voiceStart(g.id, g.note, g.pan); g.voice = true; }
+}
+function swell(g) { if (g.voice && !g.swelled) { A.voiceSwell(g.id, 1); g.swelled = true; } }
+// How firmly a finger presses, from about 0.5 (light) to 1.8 (firm): its pressure where the phone reports one,
+// and how wide the fingertip spreads. 0.5 is what phones report when they can't measure pressure.
+function forceOf(e) {
+  let f = 1;
+  if (e.pointerType === 'touch' || e.pointerType === 'pen') {
+    if (e.pressure > 0 && e.pressure !== 0.5) f *= 0.55 + e.pressure * 0.9;
+    const w = Math.max(e.width || 0, e.height || 0);
+    if (w > 2) f *= Math.max(0.75, Math.min(1.5, w / 24));
+  }
+  return Math.max(0.5, Math.min(1.8, f));
+}
+
+document.addEventListener('pointerdown', (e) => {
+  if (e.button > 0 || isControl(e.target) || document.querySelector('dialog[open]')) return;
+  if (!standalone && e.pointerType === 'touch' && e.clientX < 24) return;
+  ensureAudio();
+  const onText = !!e.target.closest('.blk, .empty, .vblk');
+  const onWord = !!e.target.closest('#w');
+  const g = { id: e.pointerId, x0: e.clientX, y0: e.clientY, x: e.clientX, y: e.clientY, t0: performance.now(), lastT: performance.now(), lastX: e.clientX, lastY: e.clientY, vx: 0, vy: 0, f: forceOf(e),
+    onText, onWord, mode: 'pending', note: Core.touchMidi(pieceNow(), 1 - e.clientY / innerHeight), pan: (e.clientX / innerWidth) * 1.4 - 0.7, voice: false, swelled: false };
+  G.set(e.pointerId, g);
+  Field.point(g.id, g.x, g.y, 0, 0, g.f);
+  if (!onText) {
+    Field.bloom(g.x, g.y, 1, g.f); pluckAt(g.x, g.y, 0.75 + 0.15 * g.f); buzz('tap');
+    startPlay(g);
+  }
+  g.holdTimer = setTimeout(() => {
+    if (!G.has(g.id) || (g.mode !== 'pending' && g.mode !== 'play')) return;
+    if (Math.hypot(g.x - g.x0, g.y - g.y0) > SLOP) return;
+    if (g.mode === 'pending') { Field.bloom(g.x, g.y, 0.8, g.f); pluckAt(g.x, g.y, 0.8); buzz('tap'); startPlay(g); }
+    Field.hold(g.id, g.x, g.y); swell(g);
+  }, HOLD_MS);
+}, { passive: true });
+
+document.addEventListener('pointermove', (e) => {
+  const g = G.get(e.pointerId); if (!g) return;
+  const now = performance.now();
+  g.x = e.clientX; g.y = e.clientY;
+  const dtm = Math.max(1, now - g.lastT);
+  g.vx = 0.7 * g.vx + 0.3 * ((g.x - g.lastX) / dtm); g.vy = 0.7 * g.vy + 0.3 * ((g.y - g.lastY) / dtm);
+  g.lastX = g.x; g.lastY = g.y; g.lastT = now; g.f = 0.8 * g.f + 0.2 * forceOf(e);
+  Field.point(g.id, g.x, g.y, g.mode === 'pull' ? 0 : g.vx, g.mode === 'pull' ? 0 : g.vy, g.f);
+  const dx = g.x - g.x0, dy = g.y - g.y0;
+  if (g.mode === 'pending') {
+    if (Math.hypot(dx, dy) < SLOP) return;
+    const fetching = S.view === 'faith' ? S.vloading || S.vwait : S.loading;
+    if (g.onText && G.size === 1 && dy > 0 && dy > Math.abs(dx) * 1.2 && !S.busy && !fetching && $('#day').scrollTop <= 0) { g.mode = 'pull'; $('#inner').style.transition = 'none'; }
+    else if (g.onText && $('#day').classList.contains('scrolls') && Math.abs(dy) > Math.abs(dx)) { g.mode = 'scroll'; }
+    else { Field.bloom(g.x0, g.y0, 0.7, g.f); pluckAt(g.x0, g.y0, 0.75); startPlay(g); }
+  }
+  if (g.mode === 'pull') {
+    const shown = Math.max(0, Core.resist(dy * 1.6) * 1.1), k = shown / PULL_AT;
+    if (!reducedMQ.matches) $('#inner').style.transform = `translateY(${shown}px)`;
+    pullRing('drag', k);
+    if (k >= 1) { if (!g.ready) { g.ready = true; buzz('step'); } } else g.ready = false;
+    return;
+  }
+  if (g.mode === 'play') {
+    Field.trail(g.id, g.x, g.y); Field.hold(g.id, null);
+    if (Math.hypot(dx, dy) > 6) swell(g);
+    const p = pieceNow(), note = Core.touchMidi(p, 1 - g.y / innerHeight), pan = (g.x / innerWidth) * 1.4 - 0.7;
+    if (g.voice) A.voiceMove(g.id, note, pan);
+    if (note !== g.note) {
+      g.note = note;
+      if (!g.lastStep || now - g.lastStep > 70) { g.lastStep = now; if (audioReady() && A.running) A.pluck(note, pan, 0.42); buzz('step'); }
+    }
+  }
+}, { passive: true });
+
+function endPointer(e, cancelled) {
+  const g = G.get(e.pointerId); if (!g) return;
+  G.delete(e.pointerId); clearTimeout(g.holdTimer);
+  Field.point(g.id, null); Field.hold(g.id, null);
+  if (g.mode === 'pending' && !cancelled && g.onWord) { Field.bloom(g.x, g.y, 0.6, g.f); buzz('tap'); sayWord(); }
+  else if (g.mode === 'pending' && !cancelled) { Field.bloom(g.x, g.y, 0.9, g.f); pluckAt(g.x, g.y, 0.7 + 0.15 * g.f); buzz('tap'); }
+  if (g.mode === 'play') { Field.trailEnd(g.id); if (g.voice && A) A.voiceEnd(g.id); }
+  if (g.mode === 'pull') {
+    if (!cancelled && g.ready) { buzz('page'); if (S.view === 'faith') anotherVerse(); else refresh(); } else { springBack(); pullRing(''); }
+  }
+}
+document.addEventListener('pointerup', (e) => { endPointer(e, false); if (!S.muted && !audioReady()) ensureAudio(); }, { passive: true });
+document.addEventListener('pointercancel', (e) => endPointer(e, true), { passive: true });
+document.addEventListener('touchend', () => { if (!S.muted && !audioReady()) ensureAudio(); }, { passive: true });
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+/* ---------------- sheets and buttons ---------------- */
+function openSheet(d) {
+  document.querySelectorAll('dialog.sheet[open]').forEach((x) => x.close());
+  d.classList.remove('closing'); d.style.transform = ''; d.style.transition = '';
+  d.showModal();
+  if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+}
+async function closeSheet(d) {
+  if (!d.open || d.classList.contains('closing')) return;
+  if (reducedMQ.matches) { d.close(); return; }
+  d.style.transform = ''; d.classList.add('closing');
+  await wait(210); d.close(); d.classList.remove('closing');
+}
+function openSettings() {
+  setRange($('#vMusic'), S.music); setRange($('#vTouch'), S.touchVol);
+  $('#hapSw').setAttribute('aria-checked', String(S.haptics));
+  renderFaith(); renderMotion();
+  if (!S.faithHinted) { S.faithHinted = true; put('faithHinted', true); renderNav(); }
+  openSheet($('#settings'));
+}
+function setRange(el, v) { el.value = v; el.style.setProperty('--v', v + '%'); }
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('#hap') && !S.muted && !audioReady() && !e.target.closest('[data-act=sound]')) ensureAudio();
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  if (b.closest('header') && chromeOn()) bumpChrome();
+  switch (b.dataset.act) {
+    case 'sound': toggleSound(); break;
+    case 'theme': nextTheme(); buzz('tap'); break;
+    case 'tone': setTone(b.dataset.v); buzz('tap'); break;
+    case 'settings': if (chromeOn()) openSettings(); else { showChrome(); buzz('tap'); } break;
+    case 'closeSheet': closeSheet(b.closest('dialog')); break;
+    case 'prev': goTo((S.view === 'faith' ? S.vi : S.i) - 1, -1); break;
+    case 'next': goTo((S.view === 'faith' ? S.vi : S.i) + 1, 1); break;
+    case 'share': shareSet(); break;
+    case 'newSet': closeSheet($('#settings')); (S.view === 'faith' ? closeFaith() : Promise.resolve()).then(refresh); break;
+    case 'verse': openFaith(); break;
+    case 'back': closeFaith(); break;
+    case 'faith': S.faith = !S.faith; put('faith', S.faith); renderFaith(); buzz('tap'); break;
+    case 'faithPick': {
+      const f = b.dataset.v;
+      S.faiths = S.faiths.includes(f) ? S.faiths.filter((x) => x !== f) : Core.FAITHS.filter((x) => x === f || S.faiths.includes(x));
+      put('faiths', S.faiths); renderFaith(); buzz('tap');
+      break;
+    }
+    case 'retry': ensureDaily(true); break;
+    case 'reveal': {
+      const set = cur(); if (set && !set.rev) { set.rev = true; saveSets(); }
+      renderPunch(true); buzz('tap');
+      if (audioReady() && A.running) A.chime();
+      break;
+    }
+    case 'fly': S.fly = !S.fly; put('fly', S.fly); Field.fly(S.fly); renderFly(); buzz('tap'); break;
+    case 'motion':
+      S.motion = !S.motion; put('motion', S.motion); renderMotion(); buzz('tap');
+      if (S.motion && !motionOn) askForMotion().then((ok) => { if (!ok && askMotion) { S.motion = false; put('motion', false); renderMotion(); toast('Motion needs permission on iPhone, and it was declined.'); } });
+      break;
+    case 'haptics': S.haptics = !S.haptics; put('haptics', S.haptics); b.setAttribute('aria-checked', String(S.haptics)); buzz('tap'); break;
+    case 'howInstall': openInstall(); break;
+    case 'installNow':
+      if (deferredPrompt) {
+        const ev = deferredPrompt; deferredPrompt = null;
+        ev.prompt();
+        ev.userChoice.then(() => renderInstallRow()).catch(() => renderInstallRow());
+      } else { closeSheet($('#settings')); setTimeout(openInstall, 230); }
+      break;
+    case 'install':
+      if (deferredPrompt) {
+        const ev = deferredPrompt; deferredPrompt = null;
+        ev.prompt();
+        ev.userChoice.then((c) => { if (c && c.outcome === 'accepted') closeSheet($('#install')); else renderInstall(); }).catch(() => renderInstall());
+      } else closeSheet($('#install'));
+      break;
+  }
+});
+$('#w').addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sayWord(); } });
+document.addEventListener('keydown', (e) => {
+  if (document.querySelector('dialog[open]') || e.target.closest('input')) return;
+  const at = S.view === 'faith' ? S.vi : S.i;
+  if (e.key === 'ArrowLeft') goTo(at - 1, -1);
+  if (e.key === 'ArrowRight') goTo(at + 1, 1);
+  if (e.key === 'Escape' && S.view === 'faith') closeFaith();
+});
+
+$('#vMusic').addEventListener('input', (e) => { S.music = +e.target.value; setRange(e.target, S.music); put('music', S.music); if (A) A.setLevels(S.music / 100, null); });
+$('#vTouch').addEventListener('input', (e) => { S.touchVol = +e.target.value; setRange(e.target, S.touchVol); put('touch', S.touchVol); if (A) A.setLevels(null, S.touchVol / 100); });
+$('#vTouch').addEventListener('change', () => { if (audioReady() && A.running) A.pluck(Core.touchMidi(pieceNow(), 0.6), 0, 0.8); });
+
+// Every sheet: a tap on the backdrop, Back or Escape closes it; drag its top down, or swipe it right, to close it too.
+document.querySelectorAll('dialog.sheet').forEach((d) => {
+  d.addEventListener('click', (e) => { if (e.target === d) closeSheet(d); });
+  d.addEventListener('cancel', (e) => { e.preventDefault(); closeSheet(d); });
+  let s = null;
+  d.addEventListener('pointerdown', (e) => {
+    if (e.target === d || e.target.closest('input, button')) return;
+    s = { x: e.clientX, y: e.clientY, t: performance.now(), top: !!e.target.closest('[data-drag]'), dir: null };
+  });
+  d.addEventListener('pointermove', (e) => {
+    if (!s) return;
+    const dx = e.clientX - s.x, dy = e.clientY - s.y;
+    if (!s.dir && Math.hypot(dx, dy) > 10) s.dir = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+    if (reducedMQ.matches) return;
+    if (s.dir === 'y' && s.top && dy > 0) { d.style.transition = 'none'; d.style.transform = `translateY(${dy}px)`; }
+    if (s.dir === 'x' && dx > 0) { d.style.transition = 'none'; d.style.transform = `translateX(${dx}px)`; }
+  });
+  const end = (e, cancelled) => {
+    if (!s) return;
+    const dx = e.clientX - s.x, dy = e.clientY - s.y, v = (s.dir === 'x' ? dx : dy) / Math.max(1, performance.now() - s.t);
+    const go = !cancelled && ((s.dir === 'y' && s.top && (dy > d.offsetHeight / 4 || (v > 0.5 && dy > 24))) || (s.dir === 'x' && (dx > d.offsetWidth / 3 || (v > 0.5 && dx > 24))));
+    s = null;
+    if (reducedMQ.matches) { if (go) d.close(); return; }
+    d.style.transition = 'transform .3s cubic-bezier(.2,.8,.2,1)';
+    if (go) { d.style.transform = dx > Math.abs(dy) ? `translateX(${d.offsetWidth}px)` : `translateY(${d.offsetHeight}px)`; setTimeout(() => { d.close(); d.style.transform = ''; d.style.transition = ''; }, 260); }
+    else d.style.transform = '';
+  };
+  d.addEventListener('pointerup', (e) => end(e, false)); d.addEventListener('pointercancel', (e) => end(e, true));
+});
+
+/* ---------------- colour themes ---------------- */
+// Each tap of the eye makes the next theme; every colour glides there together.
+function applyPalette(animate) {
+  const pal = Core.palette(S.themeN, S.tone), r = document.documentElement;
+  if (!animate) r.classList.add('instant');
+  r.dataset.tone = pal.tone;
+  for (const [k, v] of Object.entries(pal.vars)) r.style.setProperty(k, v);
+  $('meta[name=theme-color]').setAttribute('content', pal.bg);
+  Field.colours(pal.glow, pal.tone, animate ? 1600 : 0, pal.rgb.h1[0], pal.rgb.h2[0]);
+  put('pal', { tone: pal.tone, vars: pal.vars }); put('themeN', S.themeN);
+  if (!animate) { void r.offsetWidth; r.classList.remove('instant'); }
+  document.querySelectorAll('[data-act=tone]').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.v === S.tone)));
+}
+function nextTheme() { S.themeN += 1; applyPalette(true); }
+function setTone(v) { if (!Core.TONES.includes(v) || v === S.tone) return; S.tone = v; put('tone', v); applyPalette(true); }
+
+/* ---------------- install: a welcome sheet on the first open ---------------- */
+let deferredPrompt = null;
+const canInstall = !standalone && (isIOS || isAndroid);
+const I = {
+  kebab: '<svg class="glyph" viewBox="0 0 24 24" aria-label="the three-dot menu"><circle cx="12" cy="5.5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="18.5" r="1.6"/></svg>',
+  share: '<svg class="glyph line" viewBox="0 0 24 24" aria-label="Share"><path d="M12 3.5v11M8 7.5l4-4 4 4"/><path d="M7 10.5H5.5v10h13v-10H17"/></svg>',
+};
+function renderInstall() {
+  const steps = $('#insSteps'), go = $('#insGo'), later = $('#insLater');
+  if (isIOS) {
+    $('#insTitle').textContent = 'Add Daily Drift to your iPhone';
+    $('#insLead').textContent = 'It sits on your Home Screen like any other app, opens full screen and works offline.';
+    steps.innerHTML = `<li>In Safari, tap Share ${I.share}. On iOS 26 it’s under ⋯ beside the address bar.</li>
+      <li>Choose <b>Add to Home Screen</b>, keep <b>Open as Web App</b> on, then tap <b>Add</b>.</li>
+      <li>From now on, open Daily Drift from its icon.</li>`;
+    go.textContent = 'Got it'; go.dataset.act = 'closeSheet'; later.hidden = true;
+  } else {
+    $('#insTitle').textContent = 'Install Daily Drift';
+    $('#insLead').textContent = 'It installs like any other app: in your app drawer and on your home screen, full screen and offline.';
+    if (deferredPrompt) {
+      steps.innerHTML = `<li>Tap <b>Install</b> below, then confirm.</li><li>Open Daily Drift from your app drawer or home screen.</li>`;
+      go.textContent = 'Install'; go.dataset.act = 'install'; later.hidden = false;
+    } else {
+      steps.innerHTML = `<li>In Chrome, tap ${I.kebab} at the top right.</li>
+        <li>Choose <b>Install app</b>. If you see <b>Add to home screen</b>, choose that, then <b>Install</b>.</li>
+        <li>Open Daily Drift from your app drawer or home screen.</li>`;
+      go.textContent = 'Got it'; go.dataset.act = 'closeSheet'; later.hidden = true;
+    }
+  }
+}
+function openInstall() { renderInstall(); openSheet($('#install')); }
+$('#install').addEventListener('close', () => put('installSeen', true));
+$('#settings').addEventListener('close', () => { if (chromeOn()) bumpChrome(); });
+// Settings keeps an Install row, for anyone who closed the welcome sheet.
+let installedNow = false;
+function renderInstallRow() {
+  const row = $('#insRow'), btn = $('#insBtn'), note = $('#insNote'), state = $('#insState');
+  const done = standalone || installedNow;
+  row.hidden = !(done || isIOS || isAndroid || deferredPrompt); note.hidden = row.hidden;
+  state.hidden = !done; btn.hidden = done;
+  if (done) { note.textContent = standalone ? '' : 'Open Daily Drift from your app drawer or home screen.'; note.hidden = !note.textContent; return; }
+  if (deferredPrompt) { btn.textContent = 'Install'; note.textContent = 'Adds Daily Drift to your app drawer and home screen, like any other app.'; }
+  else if (isIOS) { btn.textContent = 'Show me how'; note.textContent = 'In Safari, tap Share, then Add to Home Screen. It then opens from its own icon, like any other app.'; }
+  else { btn.textContent = 'Show me how'; note.textContent = 'In Chrome, tap ⋮ at the top right, then Install app. It then sits in your app drawer like any other app.'; }
+}
+window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; if ($('#install').open) renderInstall(); renderInstallRow(); });
+window.addEventListener('appinstalled', () => { put('installSeen', true); installedNow = true; closeSheet($('#install')); renderInstallRow(); });
+
+/* ---------------- start ---------------- */
+function settingsNote() {
+  const bits = [];
+  if (isIOS) bits.push(navigator.audioSession ? 'Music plays even with your iPhone on silent. Tap the speaker to turn it off.' : 'If you hear nothing, check your iPhone isn’t on silent.');
+  if (isIOS) bits.push('On iPhone, haptics need iOS 18 or later.');
+  $('#setNote').textContent = bits.join(' ');
+  if (!isIOS && !('vibrate' in navigator)) $('#hapRow').hidden = true;
+}
+
+makeGrain();
+makeComet();
+renderMotion();
+renderFly(); Field.fly(S.fly);
+if (S.motion && motionOK) { if (!askMotion) startMotion(); else if (get('motionPerm', '') === 'granted') askForMotion(); }   // allowed before: no tap needed
+applyPalette(false);
+settingsNote();
+try { if (history.state && history.state.dd) history.replaceState(null, ''); } catch {}
+renderFaith();
+Field.resize(); Field.start();
+setAudioState(S.muted ? 'muted' : 'off');
+if (latest() && latest().day >= S.today) render(); else { renderNav(); showEmpty('loading'); }
+ensureDaily(true);
+addEventListener('online', () => ensureDaily(true));
+if (S.shown) develop();                          // today's set, already on the phone, comes into focus line by line
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+renderInstallRow();
+if (canInstall && !get('installSeen', false)) setTimeout(() => { if (!document.querySelector('dialog[open]')) openInstall(); }, 1700);
+addEventListener('resize', () => { Field.resize(); fit(); });
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) { Field.stop(); if (A) pauseAudio(); for (const id of [...G.keys()]) endPointer({ pointerId: id }, true); }
+  else { Field.start(); checkToday(); if (A && !S.muted) { A.ctx.resume().then(onAudioState, () => setAudioState('off')); setTimeout(onAudioState, 600); } }
+});
+setInterval(checkToday, 20000);
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
