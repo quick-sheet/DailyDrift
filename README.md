@@ -36,6 +36,38 @@ Verses are fetched the same way. The lines are chosen in `core.js` so each stand
 
 If a faith's source is down, another ticked faith steps in; offline, a verse from earlier shows. The praying hands icon is from Phosphor Icons (MIT).
 
+## Embedded in doGet(news)
+
+doGet(news) can show its own daily tips in Daily Drift's space by framing
+`https://quick-sheet.github.io/DailyDrift/?embed=dogetnews&tone=dark` (or `tone=light`). Without `?embed`, Daily Drift is unchanged.
+
+- **Nothing is fetched.** There's no word, quote, joke or verse, and no welcome or install sheet. Settings has no Faith, Install or New set rows.
+- **Its own storage**, under `ddr.embed.`. Your own Daily Drift settings and sets are never touched.
+- **Defaults:** music off, touch sounds on, and the tone it's given. Anything changed there stays changed there.
+- **Sets last for the visit only.** Swipe the words sideways, or use the arrows, to look back through them.
+
+Messages go both ways by `postMessage`, always with `v: 1`, and only to and from `https://quick-sheet.github.io`:
+
+| Direction | Message | When |
+| --- | --- | --- |
+| to doGet(news) | `{type:'dd:ready', v:1}` | on load |
+| to doGet(news) | `{type:'dd:more', v:1}` | the words pulled down; if no set comes within 5 seconds, they settle back |
+| to doGet(news) | `{type:'dd:pick', v:1}` | the kicker tapped (open the subject picker) |
+| to doGet(news) | `{type:'dd:close', v:1}` | the round back arrow (sound is hushed) |
+| from doGet(news) | `{type:'dd:set', v:1, set:{id, kicker, credit, parts:[{label, title, body, code?, links:[{text, url}]} ×3]}}` | shows the set with the usual arrival |
+
+Where each part of a set goes:
+
+- **Part 1** goes in the word's place: its title large, its label in italics, and its body as the meaning.
+- **Part 2** goes in the quote's place: its body, then any code in monospace (about 6 lines, scrolling sideways).
+- **Part 3** goes in the joke's place.
+- **Links** become small chips under their part and open in a new tab.
+- **The kicker** sits above part 1, and **the credit** at the foot.
+
+Everything is shown as plain text, and only https links are kept. Share sends the usual picture, including the kicker and credit. Its text is the first link and `https://quick-sheet.github.io/doGetNews/`.
+
+The frame needs `allow="accelerometer; gyroscope; autoplay; web-share"` for motion, sound and sharing.
+
 ## Share the app
 
 Send the live link. Each phone keeps its own sets and settings.

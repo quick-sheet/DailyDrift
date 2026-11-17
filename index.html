@@ -18,8 +18,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..400;1,6..72,300&display=swap">
 <script>
   // Paint the last colours straight away; on a first visit, follow the phone's light or dark setting.
-  (function () { var r = document.documentElement, p = null; try { p = JSON.parse(localStorage.getItem('ddr.pal')); } catch (e) {}
+  // Embedded in doGet(news) (?embed=dogetnews): its own colours (ddr.embed.), and on a first visit the tone it was given.
+  (function () { var r = document.documentElement, p = null, em = false, et = '';
+    try { var q = new URLSearchParams(location.search); em = q.get('embed') === 'dogetnews'; et = q.get('tone') || ''; } catch (e) {}
+    if (em) r.classList.add('embed');
+    try { p = JSON.parse(localStorage.getItem(em ? 'ddr.embed.pal' : 'ddr.pal')); } catch (e) {}
     if (p && p.vars) { r.dataset.tone = p.tone; for (var k in p.vars) r.style.setProperty(k, p.vars[k]); }
+    else if (em && (et === 'light' || et === 'dark')) r.dataset.tone = et;
     else if (matchMedia('(prefers-color-scheme: light)').matches) r.dataset.tone = 'light'; })();
 </script>
 <style>
@@ -130,6 +135,29 @@ main.scrolls{overflow-y:auto;touch-action:pan-y;-webkit-overflow-scrolling:touch
 .back svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .back:active{background:var(--sun-soft);color:var(--ink);box-shadow:inset 0 0 0 1px transparent}
 
+/* embedded in doGet(news): a set of tips in the word, quote and joke's places (none of this shows otherwise) */
+.kick{display:inline-flex;align-items:center;gap:6px;min-height:36px;margin:0 auto 10px;padding:0 8px;border-radius:18px;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);transition:background .2s,color .2s}
+.kick svg{flex:none;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.kick:active{background:var(--sun-soft);color:var(--ink)}
+:root.embed .w{white-space:normal;font-size:56px;line-height:1.08;text-wrap:balance}
+:root.embed main.dense .w{font-size:46px}
+.lbl{margin-bottom:10px;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.ttl{margin:0 auto 8px;max-width:24em;font-size:17px;font-weight:500;line-height:1.4;text-wrap:balance}
+.q.tip{text-wrap:balance}
+.code{display:block;margin:16px auto 0;max-width:100%;max-height:calc(6 * 19.5px + 22px);overflow:auto;padding:11px 14px;border-radius:12px;background:var(--line);box-shadow:inset 0 0 0 1px var(--line);text-align:left;
+  font:400 13px/19.5px ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Roboto Mono","Liberation Mono",monospace;white-space:pre;color:var(--ink);tab-size:2;touch-action:pan-x;overscroll-behavior:contain;scrollbar-width:none;-webkit-user-select:text;user-select:text}
+.code::-webkit-scrollbar{display:none}
+.code.tall{touch-action:pan-x pan-y}
+.code.more{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 34px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 34px),transparent)}   /* more to the right: it fades at the edge */
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
+.lk{display:inline-flex;align-items:center;gap:5px;max-width:100%;min-height:36px;padding:0 13px;border-radius:18px;font-size:13px;line-height:1.3;color:var(--ink-2);text-decoration:none;box-shadow:inset 0 0 0 1px var(--line-2);transition:background .2s,color .2s,box-shadow .2s}
+.lk span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lk svg{flex:none;width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.lk:active{background:var(--sun-soft);color:var(--ink);box-shadow:inset 0 0 0 1px transparent}
+.foot{margin-top:28px;font-size:12px;line-height:1.5;letter-spacing:.03em;color:var(--ink-3);text-wrap:balance}
+.inner > .back{margin-top:22px}
+main.dense .foot{margin-top:20px}
+main.dense .inner > .back{margin-top:16px}
 
 /* pull for a new set, loading, empty */
 .pull{position:absolute;left:50%;top:0;margin-left:-15px;width:30px;height:30px;display:grid;place-items:center;opacity:0;pointer-events:none;color:var(--ink-2);transition:opacity .25s;
@@ -294,6 +322,8 @@ main.dense .back{margin-top:26px}
   <symbol id="i-tick" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-fly" viewBox="0 0 24 24"><path d="M12.00 9.40L12.00 3.60M14.59 8.69L16.56 6.17M14.85 11.07L20.75 9.16M16.70 13.71L19.14 14.60M13.48 14.37L16.35 18.95M11.52 16.57L11.16 19.96M9.60 14.40L5.64 18.36M6.88 12.90L4.52 13.32M9.28 10.73L5.29 8.87"/><circle cx="12" cy="12" r="0.95" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M10.5 6.5L5 12l5.5 5.5M5.5 12H19"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6.5 9.5L12 15l5.5-5.5"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M8 16L16.5 7.5M9.5 7.5h7v7"/></symbol>
   <!-- praying hands: Phosphor Icons (MIT) -->
   <symbol id="i-pray" viewBox="0 0 256 256"><path d="M235.32,180l-36.24-36.25L162.62,23.46A21.76,21.76,0,0,0,128,12.93,21.76,21.76,0,0,0,93.38,23.46L56.92,143.76,20.68,180a16,16,0,0,0,0,22.62l32.69,32.69a16,16,0,0,0,22.63,0L124.28,187a40.68,40.68,0,0,0,3.72-4.29,40.68,40.68,0,0,0,3.72,4.29L180,235.32a16,16,0,0,0,22.63,0l32.69-32.69A16,16,0,0,0,235.32,180ZM64.68,224,32,191.32l12.69-12.69,32.69,32.69ZM120,158.75a23.85,23.85,0,0,1-7,17L88.68,200,56,167.32l13.65-13.66a8,8,0,0,0,2-3.34l37-122.22A5.78,5.78,0,0,1,120,29.78Zm23,17a23.85,23.85,0,0,1-7-17v-129a5.78,5.78,0,0,1,11.31-1.68l37,122.22a8,8,0,0,0,2,3.34l14.49,14.49-33.4,32ZM191.32,224l-12.56-12.57,33.39-32L224,191.32Z"/></symbol>
 </svg>
@@ -321,21 +351,34 @@ main.dense .back{margin-top:26px}
         <button class="reveal" id="retryBtn" data-act="retry" hidden>Try again</button>
       </div>
       <section class="blk" id="wordBlk" hidden aria-label="Word of the day">
+        <button class="kick" id="kick" data-act="pick" hidden><span id="kickT"></span><svg aria-hidden="true"><use href="#i-down"/></svg></button>
         <h1 class="w" id="w" role="button" tabindex="0" aria-label="Hear the word"></h1>
         <p class="say"><span id="pron"></span><i id="pos"></i></p>
         <p class="def" id="def"></p>
         <p class="ex" id="ex"></p>
+        <pre class="code" id="code1" hidden></pre>
+        <div class="chips" id="chips1" hidden></div>
       </section>
       <span class="mote" aria-hidden="true" hidden></span>
       <section class="blk" id="quoteBlk" hidden aria-label="Quote of the day">
+        <p class="lbl" id="lbl2" hidden></p>
+        <p class="ttl" id="ttl2" hidden></p>
         <p class="q" id="q"></p>
         <p class="by" id="by"></p>
+        <pre class="code" id="code2" hidden></pre>
+        <div class="chips" id="chips2" hidden></div>
       </section>
       <span class="mote" aria-hidden="true" hidden></span>
       <section class="blk" id="jokeBlk" hidden aria-label="Joke of the day">
+        <p class="lbl" id="lbl3" hidden></p>
+        <p class="ttl" id="ttl3" hidden></p>
         <p class="setup" id="setup"></p>
         <div id="pl"></div>
+        <pre class="code" id="code3" hidden></pre>
+        <div class="chips" id="chips3" hidden></div>
       </section>
+      <p class="foot" id="foot" hidden></p>
+      <button class="back" id="closeBtn" data-act="close" aria-label="Back to doGet(news)" title="Back" hidden><svg><use href="#i-back"/></svg></button>
       <section class="vblk" id="verseBlk" hidden aria-label="A verse">
         <div class="drift" id="vdrift" role="img" aria-label="Finding a verse" hidden>
           <span class="ring"></span><span class="ring"></span><span class="ring"></span>
@@ -388,7 +431,7 @@ main.dense .back{margin-top:26px}
   <p class="note" id="setNote"></p>
   <p class="about">A new word, quote and joke arrive each day when you open the app, with music composed on your phone to go with them. Pull the words down for another set, and use the arrows to look back. Every set stays on this phone.</p>
   <p class="credit">Built by Big Bear Binary</p>
-  <p class="credit">Release 15</p>
+  <p class="credit">Release 16</p>
   <button class="btn" data-act="closeSheet">Done</button>
 </dialog>
 
@@ -404,14 +447,18 @@ main.dense .back{margin-top:26px}
   <button class="btn quiet" id="insLater" data-act="closeSheet" hidden>Not now</button>
 </dialog>
 
-<script src="core.js?v=15"></script>
-<script src="sound.js?v=15"></script>
+<script src="core.js?v=16"></script>
+<script src="sound.js?v=16"></script>
 <script>
 'use strict';
 const $ = (s, r = document) => r.querySelector(s);
+// Embedded in doGet(news) (?embed=dogetnews&tone=dark|light): it sends its own sets of tips, shown here in the word, quote
+// and joke's places; nothing is fetched, and everything is kept apart under ddr.embed. (see "embedded" below).
+const EMBED = (() => { try { const q = new URLSearchParams(location.search); if (q.get('embed') !== 'dogetnews') return null; const t = q.get('tone'); return { tone: t === 'dark' || t === 'light' ? t : '' }; } catch { return null; } })();
 const P = 'ddr.';
-const get = (k, d) => { try { const v = localStorage.getItem(P + k); return v == null ? d : JSON.parse(v); } catch { return d; } };
-const put = (k, v) => { try { localStorage.setItem(P + k, JSON.stringify(v)); } catch {} };
+const PK = EMBED ? P + 'embed.' : P;
+const get = (k, d) => { try { const v = localStorage.getItem(PK + k); return v == null ? d : JSON.parse(v); } catch { return d; } };
+const put = (k, v) => { try { localStorage.setItem(PK + k, JSON.stringify(v)); } catch {} };
 const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const isAndroid = /Android/.test(navigator.userAgent);
 const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -421,10 +468,10 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const today0 = Core.dayNumber(new Date());
 const S = {
   today: today0,
-  sets: get('sets', []),            // every set fetched, oldest first, kept on this phone
+  sets: EMBED ? [] : get('sets', []),   // every set fetched, oldest first, kept on this phone (embedded: the sets sent this visit only)
   i: 0,                             // the set on screen
-  themeN: get('themeN', document.documentElement.dataset.tone === 'light' ? 2 : 0), tone: get('tone', 'both'),
-  music: get('music', 70), touchVol: get('touch', 80), haptics: get('haptics', true),
+  themeN: get('themeN', document.documentElement.dataset.tone === 'light' ? 2 : 0), tone: get('tone', EMBED && EMBED.tone ? EMBED.tone : 'both'),
+  music: get('music', EMBED ? 0 : 70), touchVol: get('touch', 80), haptics: get('haptics', true),
   muted: get('muted', false), pulled: get('pulled', false), heard: get('heard', false), motion: get('motion', true), fly: get('fly', false),
   busy: false, loading: false,
   // faith: off until chosen in Settings; the verses seen are kept on this phone too
@@ -435,7 +482,7 @@ const S = {
 };
 if (!Array.isArray(S.sets)) S.sets = [];
 if (!Array.isArray(S.faiths)) S.faiths = [];
-const canFaith = Array.isArray(Core.FAITHS);   // false only for a moment after an update, if the phone still holds the old core.js
+const canFaith = !EMBED && Array.isArray(Core.FAITHS);   // false only for a moment after an update, if the phone still holds the old core.js (and always when embedded)
 S.faiths = canFaith ? S.faiths.filter((f) => Core.FAITHS.includes(f)) : [];
 if (!Array.isArray(S.verses)) S.verses = [];
 S.vi = Math.max(0, S.verses.length - 1);
@@ -445,7 +492,7 @@ S.i = Math.max(0, S.sets.length - 1);
 const cur = () => S.sets[S.i] || null;
 const latest = () => S.sets[S.sets.length - 1] || null;
 const pieceNow = () => Core.piece(cur() ? cur().seed : S.today);
-const saveSets = () => { S.sets = S.sets.slice(-400); put('sets', S.sets); };
+const saveSets = () => { S.sets = S.sets.slice(-400); if (!EMBED) put('sets', S.sets); };
 
 /* ---------------- rendering ---------------- */
 function setLabel(i) {
@@ -470,8 +517,9 @@ function render() {
   document.querySelectorAll('.blk, .inner > .mote').forEach((el) => { el.hidden = !set; });
   $('#empty').hidden = !!set;
   if (!set) applyEmpty();
-  $('#date').textContent = setLabel(S.i);
-  if (set) {
+  $('#date').textContent = set && set.tips ? set.tips.kicker || 'Tips' : setLabel(S.i);
+  if (set && set.tips) renderTips(set);
+  else if (set) {
     $('#w').textContent = set.w.w;
     $('#w').setAttribute('aria-label', 'Hear “' + set.w.w + '”');
     $('#pron').textContent = set.w.ipa || '';
@@ -491,6 +539,62 @@ function render() {
   renderNav();
   fit();
   queueShareImage();
+}
+
+// Embedded: part 1 in the word's place (its title large, its body as the meaning), part 2 in the quote's (its code beneath,
+// in monospace, scrolling sideways), part 3 in the joke's; the kicker above, the credit at the foot. All plain text.
+function renderTips(set) {
+  const T = set.tips, [p1, p2, p3] = T.parts;
+  $('#day').scrollTop = 0;
+  $('#kickT').textContent = T.kicker; $('#kick').hidden = !T.kicker;
+  $('#kick').setAttribute('aria-label', (T.kicker ? T.kicker + '. ' : '') + 'Choose a subject');
+  $('#w').textContent = p1.title;
+  $('#w').setAttribute('aria-label', p1.title ? 'Hear “' + p1.title + '”' : '');
+  $('#w').hidden = !p1.title;
+  $('#pron').textContent = ''; $('#pos').textContent = p1.label; $('#pos').classList.add('solo');
+  $('#wordBlk .say').hidden = !p1.label;
+  $('#def').textContent = p1.body; $('#def').hidden = !p1.body;
+  $('#ex').textContent = ''; $('#ex').hidden = true;
+  $('#wordBlk').setAttribute('aria-label', p1.label || 'Tip');
+  tipCode($('#code1'), p1.code); tipLinks($('#chips1'), p1.links);
+  const motes = document.querySelectorAll('.inner > .mote');
+  motes[0].hidden = !p2; $('#quoteBlk').hidden = !p2;
+  if (p2) {
+    tipLine($('#lbl2'), p2.label); tipLine($('#ttl2'), p2.title);
+    const q = $('#q'); q.textContent = p2.body; q.hidden = !p2.body; q.classList.add('tip');
+    $('#by').textContent = ''; $('#by').hidden = true;
+    $('#quoteBlk').setAttribute('aria-label', p2.label || 'Tip');
+    tipCode($('#code2'), p2.code); tipLinks($('#chips2'), p2.links);
+  }
+  motes[1].hidden = !p3; $('#jokeBlk').hidden = !p3;
+  if (p3) {
+    tipLine($('#lbl3'), p3.label); tipLine($('#ttl3'), p3.title);
+    $('#setup').textContent = p3.body; $('#setup').hidden = !p3.body; $('#pl').textContent = '';
+    $('#jokeBlk').setAttribute('aria-label', p3.label || 'Tip');
+    tipCode($('#code3'), p3.code); tipLinks($('#chips3'), p3.links);
+  }
+  tipLine($('#foot'), T.credit);
+  $('#closeBtn').hidden = false;
+}
+function tipLine(el, text) { el.textContent = text || ''; el.hidden = !text; }
+function tipCode(el, code) {
+  el.textContent = code || ''; el.hidden = !code; el.scrollLeft = 0; el.scrollTop = 0;
+  el.classList.toggle('tall', !!code && code.split('\n').length > 6);
+  el.setAttribute('aria-label', 'Code');
+  if (!el.dataset.fade) { el.dataset.fade = '1'; el.addEventListener('scroll', () => codeFade(el), { passive: true }); }
+  requestAnimationFrame(() => codeFade(el));
+}
+const codeFade = (el) => el.classList.toggle('more', el.scrollLeft + el.clientWidth < el.scrollWidth - 2);
+function tipLinks(box, links) {
+  box.textContent = '';
+  for (const l of links || []) {
+    const a = document.createElement('a'); a.className = 'lk'; a.href = l.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    const t = document.createElement('span'); t.textContent = l.text; a.append(t);
+    a.insertAdjacentHTML('beforeend', '<svg aria-hidden="true"><use href="#i-out"/></svg>');
+    a.title = l.url;
+    box.append(a);
+  }
+  box.hidden = !box.childElementCount;
 }
 
 function renderPunch(fresh) {
@@ -1043,7 +1147,7 @@ async function arrive(dir, update) {
   await wait(380);
 }
 // Every line on the page, top to bottom: the word, its sound, definition and example, the quote, the joke, or a verse.
-const LINES = '.w, .say, .def, .ex, .mote, .q, .by, .setup, #pl > *, .vbook, .vq, .vmsg, .back, .empty, .vblk .drift';
+const LINES = '.kick, .w, .say, .def, .ex, .mote, .lbl, .ttl, .q, .by, .setup, #pl > *, .code, .chips, .foot, .vbook, .vq, .vmsg, .back, .empty, .vblk .drift';
 const lines = () => [...$('#inner').querySelectorAll(LINES)].filter((n) => n.getClientRects().length);
 // The lines swell a touch and blur, never anything that changes the layout (letter-spacing rewraps text and jolts
 // the page), so every line stays exactly where it will settle.
@@ -1139,11 +1243,13 @@ function applyEmpty() {
   $('#empty').classList.toggle('loading', state === 'loading');
   $('#retryBtn').hidden = state === 'loading';
   $('#emptyMsg').classList.toggle('later', state === 'loading');
-  $('#emptyMsg').textContent = state === 'loading' ? 'Gathering today’s word, quote and joke…' : 'You’re offline. Connect to the internet to get your first set.';
+  $('#emptyMsg').textContent = EMBED ? (state === 'loading' ? 'Gathering today’s tips…' : 'The tips haven’t arrived. Try again in a moment.')
+    : state === 'loading' ? 'Gathering today’s word, quote and joke…' : 'You’re offline. Connect to the internet to get your first set.';
 }
 // On open, at midnight and when the phone comes back online: one new set per day.
 let lastTry = 0, failNoted = false;
 async function ensureDaily(force) {
+  if (EMBED) return;                             // embedded: the sets come from doGet(news), never from here
   S.today = Core.dayNumber(new Date());
   const last = latest();
   if (S.loading || (last && last.day >= S.today)) return;
@@ -1177,7 +1283,8 @@ async function refresh() {
   S.loading = true; S.busy = true; pullRing('busy');
   const out = leave(0);                          // the words fade away, top to bottom, while the next set comes
   let res = null;
-  try { res = await fetchSet(latest() ? 'more' : 'daily'); } catch {}
+  if (EMBED) res = await Embed.more();           // embedded: doGet(news) is asked, and answers with its next set (or 5 s pass)
+  else try { res = await fetchSet(latest() ? 'more' : 'daily'); } catch {}
   try {
     if (res) { S.sets.push(res.set); saveSets(); if (!S.pulled) { S.pulled = true; put('pulled', true); } }
     await out;
@@ -1188,7 +1295,7 @@ async function refresh() {
       await arrive(0, () => { S.i = S.sets.length - 1; render(); });
       if (res.missing.length) toast(missingNote(res.missing));
     } else {
-      toast('Couldn’t get a new set. Check your connection and pull down again.');
+      toast(EMBED ? 'Nothing new came just then. Pull down to try again.' : 'Couldn’t get a new set. Check your connection and pull down again.');
       await arrive(0, render);                   // the same set comes back into focus
     }
   } finally { S.loading = false; S.busy = false; pullRing(''); }
@@ -1386,6 +1493,31 @@ async function makeShareImage() {
       add(`400 ${30 * k}px ${SANS}`, ink3, [Core.verseCite(verse)], 40 * k, 30 * k);
       return B;
     }
+    if (set.tips) {                              // embedded: the kicker, the three parts, the credit
+      const T = set.tips, [p1, p2, p3] = T.parts, MONO = 'ui-monospace, "SF Mono", Menlo, Consolas, "Roboto Mono", monospace';
+      const small = (t, gap) => add(`500 ${26 * k}px ${SANS}`, ink3, [t.toUpperCase()], 38 * k, gap, { spaced: 6 * k });
+      const code = (c) => {                      // up to six lines, each cut to the width with an ellipsis
+        if (!c) return;
+        g.font = `400 ${28 * k}px ${MONO}`;
+        const ls = c.split('\n').slice(0, 6).map((l) => { if (g.measureText(l).width <= 820) return l; while (l.length > 1 && g.measureText(l + '…').width > 820) l = l.slice(0, -1); return l + '…'; });
+        add(g.font, ink, ls, 40 * k, 26 * k, { code: true });
+      };
+      if (T.kicker) small(T.kicker, 0);
+      if (p1.title) { g.font = `200 ${118 * k}px ${SERIF}`; let sz = 118 * k; const fit1 = () => balanced(g, p1.title, 900); while ((fit1().length > 2 || fit1().some((l) => g.measureText(l).width > 900)) && sz > 48) { sz -= 4; g.font = `200 ${sz}px ${SERIF}`; } add(g.font, ink, fit1(), sz * 1.08, T.kicker ? 26 * k : 0, { glow: dark }); }
+      if (p1.label) add(`italic 300 ${32 * k}px ${SERIF}`, ink3, [p1.label], 44 * k, 16 * k);
+      if (p1.body) { g.font = `300 ${40 * k}px ${SANS}`; add(g.font, ink, balanced(g, p1.body, 860), 56 * k, 28 * k); }
+      code(p1.code);
+      for (const [n, pt] of [[2, p2], [3, p3]]) {
+        if (!pt) continue;
+        add('', '', [], 0, 48 * k, { mote: true });
+        if (pt.label) small(pt.label, 48 * k);
+        if (pt.title) { g.font = `500 ${38 * k}px ${SANS}`; add(g.font, ink, balanced(g, pt.title, 860), 52 * k, pt.label ? 12 * k : 48 * k); }
+        if (pt.body) { g.font = n === 2 ? `300 ${46 * k}px ${SERIF}` : `400 ${38 * k}px ${SANS}`; add(g.font, ink, balanced(g, pt.body, 860), (n === 2 ? 60 : 54) * k, pt.label || pt.title ? 14 * k : 48 * k); }
+        code(pt.code);
+      }
+      if (T.credit) { g.font = `400 ${24 * k}px ${SANS}`; add(g.font, ink3, balanced(g, T.credit, 860), 34 * k, 50 * k); }
+      return B;
+    }
     g.font = `200 ${150 * k}px ${SERIF}`; let wsz = 150 * k; while (g.measureText(set.w.w).width > 900 && wsz > 60) { wsz -= 4; g.font = `200 ${wsz}px ${SERIF}`; }
     add(g.font, ink, [set.w.w], wsz * 1.05, 0, { glow: dark });
     const say = [set.w.ipa, set.w.pos].filter(Boolean).join('   ');
@@ -1400,7 +1532,7 @@ async function makeShareImage() {
     if (set.j.p) { g.font = `500 ${40 * k}px ${SANS}`; add(g.font, ink, balanced(g, set.j.p, 860), 56 * k, 18 * k); }
     return B;
   };
-  const height = (B) => B.reduce((h, b) => h + b.gapBefore + (b.mote ? 6 : b.lines.length * b.lh), 0);
+  const height = (B) => B.reduce((h, b) => h + b.gapBefore + (b.mote ? 6 : b.lines.length * b.lh + (b.code ? 30 : 0)), 0);
   for (blocks = layout(); height(blocks) > H - 220 && k > 0.6; blocks = layout()) k -= 0.05;
   let y = (H - height(blocks)) / 2 - 10;
   g.textAlign = 'center'; g.textBaseline = 'alphabetic';
@@ -1409,6 +1541,13 @@ async function makeShareImage() {
     if (b.mote) { g.fillStyle = `rgba(${glow},.75)`; g.shadowColor = `rgba(${glow},.5)`; g.shadowBlur = dark ? 18 : 0; g.beginPath(); g.arc(W / 2, y + 3, 5, 0, 6.283); g.fill(); g.shadowBlur = 0; y += 6; continue; }
     g.font = b.font; g.fillStyle = b.color;
     if ('letterSpacing' in g) g.letterSpacing = b.spaced ? b.spaced + 'px' : '0px';
+    if (b.code) {                                // code: left-aligned in a soft rounded box
+      const wMax = Math.max(...b.lines.map((l) => g.measureText(l).width)), bw = Math.min(900, wMax + 56), bx = (W - bw) / 2, bh = b.lines.length * b.lh + 30;
+      g.fillStyle = pal.vars['--line']; g.beginPath(); if (g.roundRect) g.roundRect(bx, y, bw, bh, 22); else g.rect(bx, y, bw, bh); g.fill();
+      g.fillStyle = b.color; g.textAlign = 'left';
+      for (const line of b.lines) { y += b.lh; g.fillText(line, bx + 28, y - b.lh * 0.24 + 15); }
+      g.textAlign = 'center'; y += 30; continue;
+    }
     for (const line of b.lines) {
       y += b.lh;
       if (b.glow) { g.shadowColor = `rgba(${glow},${b.soft ? 0.2 : 0.35})`; g.shadowBlur = 40; }
@@ -1427,9 +1566,12 @@ async function shareSet() {
   const b = $('#shareBtn');
   let blob = shareCache.key === shareKey() ? shareCache.blob : null;
   if (!blob) { b.classList.add('busy'); b.setAttribute('aria-busy', 'true'); try { blob = await makeShareImage(); } finally { b.classList.remove('busy'); b.removeAttribute('aria-busy'); } }
-  const file = new File([blob], verse ? 'daily-drift-verse.png' : `daily-drift-${set.w.w}.png`, { type: 'image/png' });
+  const tips = set && set.tips;
+  const file = new File([blob], verse ? 'daily-drift-verse.png' : tips ? `doget-news-${(tips.parts[0].title || 'tips').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'tips'}.png` : `daily-drift-${set.w.w}.png`, { type: 'image/png' });
+  const data = { files: [file] };
+  if (tips) { const first = tips.parts.flatMap((pt) => (pt ? pt.links : [])).find(Boolean); data.text = [first && first.url, 'https://quick-sheet.github.io/doGetNews/'].filter(Boolean).join('\n'); }
   if (navigator.canShare && navigator.canShare({ files: [file] })) {
-    try { await navigator.share({ files: [file] }); }
+    try { await navigator.share(data); }
     catch (e) {
       if (e && e.name === 'NotAllowedError') toast('The picture is ready. Tap share again to send it.');
       else if (!e || e.name !== 'AbortError') toast('This phone couldn’t open sharing. Try again in a moment.');
@@ -1444,7 +1586,7 @@ async function shareSet() {
 /* ---------------- touch: play the space, pull the words for a new set ---------------- */
 const G = new Map();
 const HOLD_MS = 220, SLOP = 10, PULL_AT = 76;
-const isControl = (el) => el.closest('button, a, input, label, select, dialog, #hap');
+const isControl = (el) => el.closest('button, a, input, label, select, dialog, #hap, .code');   // (code scrolls sideways under the finger)
 
 function startPlay(g, now) {
   g.mode = 'play';
@@ -1499,8 +1641,16 @@ document.addEventListener('pointermove', (e) => {
     if (Math.hypot(dx, dy) < SLOP) return;
     const fetching = S.view === 'faith' ? S.vloading || S.vwait : S.loading;
     if (g.onText && G.size === 1 && dy > 0 && dy > Math.abs(dx) * 1.2 && !S.busy && !fetching && $('#day').scrollTop <= 0) { g.mode = 'pull'; $('#inner').style.transition = 'none'; }
+    else if (EMBED && g.onText && G.size === 1 && Math.abs(dx) > Math.abs(dy) * 1.2 && !S.busy && cur()) { g.mode = 'swipe'; $('#inner').style.transition = 'none'; }   // embedded: swipe the words sideways through this visit's sets
     else if (g.onText && $('#day').classList.contains('scrolls') && Math.abs(dy) > Math.abs(dx)) { g.mode = 'scroll'; }
     else { Field.bloom(g.x0, g.y0, 0.7, g.f); pluckAt(g.x0, g.y0, 0.75); startPlay(g); }
+  }
+  if (g.mode === 'swipe') {
+    const can = dx > 0 ? S.i > 0 : S.i < S.sets.length - 1, shown = can ? dx : Core.resist(dx), el = $('#inner');
+    if (reducedMQ.matches) { el.style.opacity = String(1 - Math.min(0.35, Math.abs(shown) / innerWidth * 0.6)); return; }
+    el.style.transform = `translateX(${shown}px)`;
+    el.style.opacity = String(1 - Math.min(0.55, Math.abs(shown) / innerWidth * 0.9));
+    return;
   }
   if (g.mode === 'pull') {
     const shown = Math.max(0, Core.resist(dy * 1.6) * 1.1), k = shown / PULL_AT;
@@ -1530,6 +1680,10 @@ function endPointer(e, cancelled) {
   if (g.mode === 'play') { Field.trailEnd(g.id); if (g.voice && A) A.voiceEnd(g.id); }
   if (g.mode === 'pull') {
     if (!cancelled && g.ready) { buzz('page'); if (S.view === 'faith') anotherVerse(); else refresh(); } else { springBack(); pullRing(''); }
+  }
+  if (g.mode === 'swipe') {
+    const out = cancelled ? 0 : Core.swipeOutcome(g.x - g.x0, innerWidth, g.vx), to = S.i + out;
+    if (out && to >= 0 && to < S.sets.length) goTo(to, out); else springBack();
   }
 }
 document.addEventListener('pointerup', (e) => { endPointer(e, false); if (!S.muted && !audioReady()) ensureAudio(); }, { passive: true });
@@ -1575,6 +1729,8 @@ document.addEventListener('click', (e) => {
     case 'newSet': closeSheet($('#settings')); (S.view === 'faith' ? closeFaith() : Promise.resolve()).then(refresh); break;
     case 'verse': openFaith(); break;
     case 'back': closeFaith(); break;
+    case 'pick': if (Embed) { Embed.send('dd:pick'); buzz('tap'); } break;
+    case 'close': if (Embed) { buzz('tap'); Embed.close(); } break;
     case 'faith': S.faith = !S.faith; put('faith', S.faith); renderFaith(); buzz('tap'); break;
     case 'faithPick': {
       const f = b.dataset.v;
@@ -1582,7 +1738,7 @@ document.addEventListener('click', (e) => {
       put('faiths', S.faiths); renderFaith(); buzz('tap');
       break;
     }
-    case 'retry': ensureDaily(true); break;
+    case 'retry': if (Embed) { showEmpty('loading'); Embed.start(); } else ensureDaily(true); break;
     case 'reveal': {
       const set = cur(); if (set && !set.rev) { set.rev = true; saveSets(); }
       renderPunch(true); buzz('tap');
@@ -1708,6 +1864,7 @@ $('#settings').addEventListener('close', () => { if (chromeOn()) bumpChrome(); }
 let installedNow = false;
 function renderInstallRow() {
   const row = $('#insRow'), btn = $('#insBtn'), note = $('#insNote'), state = $('#insState');
+  if (EMBED) { row.hidden = true; note.hidden = true; return; }
   const done = standalone || installedNow;
   row.hidden = !(done || isIOS || isAndroid || deferredPrompt); note.hidden = row.hidden;
   state.hidden = !done; btn.hidden = done;
@@ -1718,6 +1875,97 @@ function renderInstallRow() {
 }
 window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; if ($('#install').open) renderInstall(); renderInstallRow(); });
 window.addEventListener('appinstalled', () => { put('installSeen', true); installedNow = true; closeSheet($('#install')); renderInstallRow(); });
+
+/* ---------------- embedded in doGet(news) ---------------- */
+// doGet(news) shows this page in a frame (?embed=dogetnews&tone=dark|light) and sends its own sets of tips. Messages go both
+// ways by window.postMessage, every one { type, v: 1 }, and only to and from https://quick-sheet.github.io:
+//   sent:     dd:ready (on load), dd:more (the words pulled down), dd:pick (the kicker tapped), dd:close (the round arrow)
+//   received: dd:set { set: { id, kicker, credit, parts: [{ label, title, body, code?, links: [{ text, url }] }, ×3] } }
+// All of it is shown as plain text, and only https links are kept. The sets live for this visit only; any setting changed
+// here is kept under ddr.embed., apart from the person's own Daily Drift.
+const Embed = (() => {
+  if (!EMBED) return null;
+  const ORIGIN = 'https://quick-sheet.github.io';
+  let framed = false; try { framed = window.parent !== window; } catch { framed = true; }
+  const send = (type) => { if (framed) { try { parent.postMessage({ type, v: 1 }, ORIGIN); } catch {} } };
+  const txt = (v, n) => (typeof v === 'string' || typeof v === 'number' ? String(v).replace(/[\u0000-\u001F\u007F-\u009F]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, n) : '');
+  const codeTxt = (v) => {                       // keeps its lines and indents; at most 12 lines of 240 characters
+    if (typeof v !== 'string') return '';
+    const ls = v.replace(/\r\n?/g, '\n').replace(/\t/g, '  ').replace(/[\u0000-\u0009\u000B-\u001F\u007F-\u009F]/g, '').split('\n').slice(0, 12).map((l) => l.replace(/\s+$/, '').slice(0, 240));
+    while (ls.length && !ls[ls.length - 1]) ls.pop();
+    while (ls.length && !ls[0].trim()) ls.shift();
+    return ls.join('\n');
+  };
+  const link = (l) => {
+    if (!l || typeof l !== 'object') return null;
+    const text = txt(l.text, 48); let u = null;
+    try { u = new URL(typeof l.url === 'string' ? l.url : ''); } catch { return null; }
+    return text && u.protocol === 'https:' && !u.username && !u.password ? { text, url: u.href } : null;
+  };
+  const part = (q) => {
+    if (!q || typeof q !== 'object') return null;
+    const o = { label: txt(q.label, 40), title: txt(q.title, 90), body: txt(q.body, 700), code: codeTxt(q.code), links: (Array.isArray(q.links) ? q.links : []).slice(0, 4).map(link).filter(Boolean) };
+    return o.title || o.body || o.code ? o : null;
+  };
+  const seedOf = (id) => { let h = 2166136261; for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 16777619); return (h >>> 1) || 1; };
+  // A set as sent, checked and made safe; null if there's nothing to show.
+  function clean(raw) {
+    if (!raw || typeof raw !== 'object' || !Array.isArray(raw.parts)) return null;
+    const parts = [0, 1, 2].map((i) => part(raw.parts[i]));
+    if (!parts[0]) return null;
+    const id = txt(raw.id, 80) || 'tips-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    return { id, day: S.today, at: Date.now(), kind: 'tips', seed: seedOf(id), rev: true,
+      tips: { kicker: txt(raw.kicker, 60), credit: txt(raw.credit, 140), parts },
+      w: { w: parts[0].title, d: parts[0].body }, q: { q: parts[1] ? parts[1].body : '', a: '' }, j: { s: parts[2] ? parts[2].body : '', p: '' } };
+  }
+  let waiting = null, firstTimer = 0;
+  // A pull: doGet(news) is asked for more, and its next set (or nothing, after 5 s) is what refresh() gets back.
+  function more() {
+    if (waiting) waiting(null);
+    send('dd:more');
+    return new Promise((resolve) => {
+      let timer = 0;
+      const done = (v) => { clearTimeout(timer); if (waiting === done) waiting = null; resolve(v); };
+      timer = setTimeout(() => done(null), 5000);
+      waiting = done;
+    });
+  }
+  async function take(set) {
+    if (waiting) { waiting({ set, missing: [] }); return; }   // the answer to a pull: it arrives as a pulled set does
+    const c = cur();
+    if (c && c.id === set.id && S.i === S.sets.length - 1) { S.sets[S.i] = set; if (!S.busy) render(); return; }   // the same set again
+    S.sets.push(set); saveSets();
+    while (S.busy || S.loading) await wait(60);
+    await goTo(S.sets.length - 1, 0);            // the words fade, and the new set comes into focus line by line, with its bell
+  }
+  addEventListener('message', (e) => {
+    if (e.origin !== ORIGIN || !framed || e.source !== window.parent) return;
+    const d = e.data;
+    if (!d || typeof d !== 'object' || d.v !== 1 || d.type !== 'dd:set') return;
+    const set = clean(d.set);
+    if (set) { clearTimeout(firstTimer); take(set); }
+  });
+  function start() {
+    send('dd:ready');
+    clearTimeout(firstTimer);
+    firstTimer = setTimeout(() => { if (!S.sets.length) showEmpty('offline'); }, 10000);
+  }
+  // The round arrow: back to doGet(news), the sound hushed until the next touch here.
+  function close() {
+    send('dd:close');
+    if (A) { pauseAudio(); if (!S.muted) setAudioState('off'); }
+  }
+  // Settings: no Faith, Install or New set here; a line about where the tips come from.
+  function tidy() {
+    const ns = $('[data-act=newSet]'); if (ns) ns.closest('.set').hidden = true;
+    const ab = $('#settings .about'); if (ab) ab.textContent = 'Tips from doGet(news), in Daily Drift’s space. Pull the words down for another set, and swipe them sideways or use the arrows to look back through the sets you’ve seen this time.';
+  }
+  // A set of tips is often longer than the screen, so it scrolls; at its top, pulling the words down still asks for more.
+  const day = $('#day'); let ty = null;
+  day.addEventListener('touchstart', (e) => { ty = e.touches.length === 1 && !(e.target.closest && e.target.closest('.code, a, button')) ? e.touches[0].clientY : null; }, { passive: true });
+  day.addEventListener('touchmove', (e) => { if (ty != null && e.cancelable && e.touches.length === 1 && day.scrollTop <= 0 && e.touches[0].clientY > ty) e.preventDefault(); }, { passive: false });
+  return { send, more, start, close, tidy, clean };
+})();
 
 /* ---------------- start ---------------- */
 function settingsNote() {
@@ -1737,15 +1985,17 @@ applyPalette(false);
 settingsNote();
 try { if (history.state && history.state.dd) history.replaceState(null, ''); } catch {}
 renderFaith();
+if (Embed) Embed.tidy();
 Field.resize(); Field.start();
 setAudioState(S.muted ? 'muted' : 'off');
 if (latest() && latest().day >= S.today) render(); else { renderNav(); showEmpty('loading'); }
 ensureDaily(true);
+if (Embed) Embed.start();                        // embedded: ready for doGet(news)'s first set
 addEventListener('online', () => ensureDaily(true));
 if (S.shown) develop();                          // today's set, already on the phone, comes into focus line by line
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 renderInstallRow();
-if (canInstall && !get('installSeen', false)) setTimeout(() => { if (!document.querySelector('dialog[open]')) openInstall(); }, 1700);
+if (canInstall && !EMBED && !get('installSeen', false)) setTimeout(() => { if (!document.querySelector('dialog[open]')) openInstall(); }, 1700);
 addEventListener('resize', () => { Field.resize(); fit(); });
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) { Field.stop(); if (A) pauseAudio(); for (const id of [...G.keys()]) endPointer({ pointerId: id }, true); }
